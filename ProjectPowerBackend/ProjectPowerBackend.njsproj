@@ -1,48 +1,61 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">14.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <Name>ProjectPowerBackend</Name>
+    <RootNamespace>ProjectPowerBackend</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{89694d70-66fb-4c17-b167-7fdb3373b080}</ProjectGuid>
-    <ProjectHome>
-    </ProjectHome>
-    <ProjectView>ShowAllFiles</ProjectView>
-    <StartupFile>api.js</StartupFile>
+    <ProjectGuid>45cde6cb-00f8-4118-8f1c-3afc7f921ad2</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <StartupFile>app.js</StartupFile>
+    <SearchPath>
+    </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <ProjectTypeGuids>{3AF33F2E-1136-4D97-BBB7-1795711AC8B8};{349c5851-65df-11da-9384-00065b846f21};{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}</ProjectTypeGuids>
-    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">17.0</VisualStudioVersion>
-    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
-    <Name>ProjectPowerAPI</Name>
+    <NodejsPort>1337</NodejsPort>
+    <StartWebBrowser>true</StartWebBrowser>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
-  <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
   <ItemGroup>
-    <Content Include="package-lock.json" />
+    <Content Include="API\api.js" />
+    <Content Include="app.js" />
+    <Content Include="routes\index.js" />
+    <Content Include="routes\users.js" />
     <Content Include="package.json" />
-    <Content Include="index.js" />
-    <Content Include="api.js" />
-    <Content Include="BLL\Common\exercise.js" />
-    <Content Include="DAL\database.js" />
-    <Content Include="BLL\UserLogin\loginHandler.js" />
-    <Content Include="BLL\FormulaLibrary\Average 2 Savage\A2SFormulaLibrary.js" />
-    <Content Include="obj\Debug\ProjectPowerAPI.njsproj.FileListAbsolute.txt" />
+    <Content Include="public\stylesheets\main.css" />
+    <Content Include="README.md" />
+    <Content Include="views\index.pug" />
+    <Content Include="views\layout.pug" />
+    <Content Include="views\error.pug" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="API" />
-    <Folder Include="bin" />
-    <Folder Include="BLL" />
-    <Folder Include="BLL\Common" />
-    <Folder Include="BLL\FormulaLibrary" />
-    <Folder Include="BLL\FormulaLibrary\Average 2 Savage" />
-    <Folder Include="BLL\UserLogin" />
-    <Folder Include="DAL" />
-    <Folder Include="expressApi" />
-    <Folder Include="FromExistingCode1" />
-    <Folder Include="obj" />
-    <Folder Include="obj\Debug" />
+    <Folder Include="API\" />
+    <Folder Include="bin\" />
+    <Folder Include="BLL\" />
+    <Folder Include="BLL\Common\" />
+    <Folder Include="BLL\FormulaLibrary\" />
+    <Folder Include="BLL\FormulaLibrary\Average 2 Savage\" />
+    <Folder Include="BLL\UserLogin\" />
+    <Folder Include="DAL\" />
+    <Folder Include="public\" />
+    <Folder Include="public\images\" />
+    <Folder Include="public\javascripts\" />
+    <Folder Include="public\stylesheets\" />
+    <Folder Include="routes\" />
+    <Folder Include="views\" />
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsToolsV2.targets" />
   <ProjectExtensions>
     <VisualStudio>

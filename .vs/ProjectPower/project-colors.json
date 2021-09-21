@@ -5,7 +5,12 @@
       "ProjectGuid": "1889a7de-27a1-43b4-ba34-690961bfcd93",
       "DisplayName": "ProjectPowerAPI",
       "ColorIndex": 0
+    },
+    "89694d70-66fb-4c17-b167-7fdb3373b080": {
+      "ProjectGuid": "89694d70-66fb-4c17-b167-7fdb3373b080",
+      "DisplayName": "ProjectPowerAPI",
+      "ColorIndex": 1
     }
   },
-  "NextColorIndex": 1
+  "NextColorIndex": 2
 }

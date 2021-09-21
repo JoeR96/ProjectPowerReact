@@ -1,6 +1,6 @@
-var A2sFl = require('./A2SFormulaLibrary');
+var A2sFl = require('../FormulaLibrary/Average 2 Savage/A2SFormulaLibrary');
 
-const { activeAccount, currentWeek } = require('../BLL/UserLogin/loginHandler');
+const { activeAccount, currentWeek } = require('../UserLogin/loginHandler');
 //get a list of exercises
 
 

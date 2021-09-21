@@ -45,8 +45,4 @@ async function postExercise(exercise){
     }
 }
 
-var x = 'Deadlift';
 
-//postExercise(ex)
-getExercises();
-getExercise(x);
