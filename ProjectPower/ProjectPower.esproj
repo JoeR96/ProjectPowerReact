@@ -10,14 +10,23 @@
   <ItemGroup>
     <None Include="package-lock.json" />
     <None Include="package.json" />
+    <None Include="src\App.css" />
+    <None Include="src\components\NavBar\SuperResponsiveTableStyle.css" />
     <None Include="src\components\SuperResponsiveTableStyle.css" />
+    <None Include="src\logo.svg" />
   </ItemGroup>
   <ItemGroup>
+    <Script Include="Navbar.js" />
     <Script Include="src\App.js" />
+    <Script Include="src\App.test.js" />
     <Script Include="src\components\A2SDailyLiftView\A2SDailyLiftView.js" />
     <Script Include="src\components\Common\ExerciseCard.js" />
     <Script Include="src\components\Navbar.js" />
+    <Script Include="src\components\NavBar\header.js" />
+    <Script Include="src\components\NavBar\Navbar.js" />
     <Script Include="src\index.js" />
+    <Script Include="src\reportWebVitals.js" />
+    <Script Include="src\setupTests.js" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="src\components\NewFolder1\" />
