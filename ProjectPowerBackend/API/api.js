@@ -1,8 +1,8 @@
-var Db = require('./DAL/database')
-var EXE = require('./BLL/Common/exercise');
+var Db = require('../DAL/database')
+var EXE = require('../BLL/Common/exercise');
 var express = require('express');
 var bodyParser = require('body-parser');
-var uam = require('./BLL/UserLogin/loginHandler');
+var uam = require('../BLL/UserLogin/loginHandler');
 var cors = require('cors');
 const { activeAccount, currentWeek } = require('../BLL/UserLogin/loginHandler');
 var app = express();

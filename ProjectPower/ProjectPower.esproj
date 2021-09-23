@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.VisualStudio.JavaScript.Sdk/0.2.0-alpha">
+﻿<Project Sdk="Microsoft.VisualStudio.JavaScript.Sdk/0.2.0-alpha">
   <PropertyGroup Label="Globals">
     <ProjectGuid>8a01c94e-239f-466a-8346-db1286b555fc</ProjectGuid>
   </PropertyGroup>
@@ -8,10 +8,20 @@
     <JavaScriptTestFramework>Jest</JavaScriptTestFramework>
   </PropertyGroup>
   <ItemGroup>
-    <Script Include="**" Exclude="*.esproj;**\node_modules\**" />
+    <None Include="package-lock.json" />
+    <None Include="package.json" />
+    <None Include="src\components\SuperResponsiveTableStyle.css" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="DAL\" />
+    <Script Include="src\App.js" />
+    <Script Include="src\components\A2SDailyLiftView\A2SDailyLiftView.js" />
+    <Script Include="src\components\Common\ExerciseCard.js" />
+    <Script Include="src\components\Navbar.js" />
+    <Script Include="src\index.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="src\components\NewFolder1\" />
+    <Folder Include="src\components\NewFolder\" />
   </ItemGroup>
   <!-- This target is copied from the ASP.NET SPA template in order to ensure node_modules are in place. -->
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
