@@ -10,7 +10,9 @@ import TextField from '@mui/material/TextField';
 import axios from 'axios';
 
 function Submit(amrap) {
-    axios.post('http://192.168.8.102:1337/api/getExerciseView', { amrap })     
+    axios.post('http://192.168.8.102:1337/api/getExerciseView', { amrap })
+        .then(res => {
+            
         })
 }
 

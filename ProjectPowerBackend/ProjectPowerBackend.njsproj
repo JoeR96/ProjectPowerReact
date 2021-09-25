@@ -32,6 +32,9 @@
   <ItemGroup>
     <Content Include="API\api.js" />
     <Content Include="BLL\Common\exercise.js" />
+    <Content Include="BLL\Common\userGlobal.js">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="BLL\FormulaLibrary\Average 2 Savage\A2SFormulaLibrary.js" />
     <Content Include="BLL\UserLogin\loginHandler.js" />
     <Content Include="DAL\database.js" />

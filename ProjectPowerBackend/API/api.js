@@ -64,6 +64,13 @@ router.route('/newexercise')
     })
 })
 
+router.route('/postAmrapResult')
+    .post((request, response) => {
+        let amrapResult = { ...request.body }
+        Db.postAmrapResult(amrapResult).then(data => {
+            response.status(201).json(data);
+        })
+    })
 
 router.route('/login')
 .post((request, response) => {

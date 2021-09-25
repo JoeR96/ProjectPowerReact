@@ -77,15 +77,22 @@ async function postExercise(exe) {
             .input('TrainingMax', sql.Decimal, exe.trainingMax)
             .execute('AddExerciseToDB');
 
-        return exercise.recordsets;
+        return exercise.\ ecordsets;
     }
     catch (err) {
         console.log(err);
     }
 }
 
+async function postAmrapResult(amrapResult, userId) {
+    let pool = await sql.connect(config);
+    let amrapResult = await pool.request()
+        .input('inputField1', sql.NVarChar, name)
+        .query("UPDATE A2SHyperTrophyTemplate SET AmrapResult = @inputField1 WHERE Week = 3 and ExerciseName = 'Squat'");
+}
 async function returnWeekIntensity(exerciseName, currentWeek){
-    try{
+    try {
+
         let pool = await sql.connect(config);
         let weekIntensityTm = await pool.request()
             .input('Week', sql.Int, currentWeek)
