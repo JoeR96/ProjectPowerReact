@@ -56,7 +56,7 @@ async function setActiveAccount(username) {
     currentDay = weekAndDay.recordset[0].CurrentDay;
 
     var x = await db.returnWeeklyWorkout(activeAccount,currentWeek)
-    console.log(currentWeek);
+
 }
 
 

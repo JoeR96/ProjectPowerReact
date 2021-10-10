@@ -10,15 +10,13 @@ import TextField from '@mui/material/TextField';
 import axios from 'axios';
 
 function Submit(amrap) {
-    axios.post('http://192.168.8.102:1337/api/getExerciseView', { amrap })
-        .then(res => {
-            
-        })
+    axios.post('http://192.168.8.102:1337/api/postAmrapResult', { amrap })
 }
 
 function ExerciseCard(props, index) {
 
     const [amrapCount, setAmrapCount] = React.useState(null);
+    const exerciseName = props.props.ExerciseName
 
     return (
         <Card sx={{ minWidth: 125 }}>
@@ -40,7 +38,12 @@ function ExerciseCard(props, index) {
                     
                     <br />
                     <Box m={2} pt={3}>
-                        <Button onClick={() => { Submit(amrapCount) }} variant="contained" size="Large">
+                        <Button onClick={() => {
+                            Submit({
+                                AmrapCount: amrapCount,
+                                ExerciseName: exerciseName
+                            })
+                        }} variant="contained" size="Large">
                             Submit
                         </Button>
                     </Box>
@@ -52,6 +55,8 @@ function ExerciseCard(props, index) {
         </Card>
     );
 }
+
+
 
 export default ExerciseCard
 

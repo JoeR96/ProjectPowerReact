@@ -1,5 +1,6 @@
 import React from 'react'
 import ExerciseCard from '../Common/ExerciseCard'
+import { BrowserRouter as Router, Route, Switch, withRouter } from "react-router-dom";
 
 function A2SDailyLiftView() {
 
@@ -9,15 +10,11 @@ function A2SDailyLiftView() {
             .then((response) => response.json())
             .then((data) => setData(data));
     }, []);
-
-    return (
-        
-        <div>
-            
-            {data.map((e, key) => (
-                
+    return (       
+        <div>          
+            {data.map((e, key) => (            
                 <ExerciseCard key={key} props={e} index={key}>
-                </ExerciseCard>
+                </ExerciseCard> 
             ))}
             
         </div>

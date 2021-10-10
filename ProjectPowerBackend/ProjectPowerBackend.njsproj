@@ -30,27 +30,40 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="API\A2SController\A2SController.js">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="API\api.js" />
     <Content Include="BLL\Common\exercise.js" />
+    <Content Include="BLL\Common\FormulaLibrary\Average2Savage\A2SFormulaLibrary.js" />
     <Content Include="BLL\Common\userGlobal.js">
       <SubType>Code</SubType>
     </Content>
-    <Content Include="BLL\FormulaLibrary\Average 2 Savage\A2SFormulaLibrary.js" />
     <Content Include="BLL\UserLogin\loginHandler.js" />
-    <Content Include="DAL\database.js" />
+    <Content Include="DAL\A2S\A2SDbAccess.js">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="DAL\Common\ExerciseDbController.js">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="DAL\Common\loginDbController.js" />
+    <Content Include="DAL\Common\database.js" />
     <Content Include="package.json" />
     <Content Include="public\stylesheets\main.css" />
     <Content Include="README.md" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="API\" />
+    <Folder Include="API\A2SController\" />
     <Folder Include="bin\" />
     <Folder Include="BLL\" />
     <Folder Include="BLL\Common\" />
-    <Folder Include="BLL\FormulaLibrary\" />
-    <Folder Include="BLL\FormulaLibrary\Average 2 Savage\" />
+    <Folder Include="BLL\Common\FormulaLibrary\" />
+    <Folder Include="BLL\Common\FormulaLibrary\Average2Savage\" />
     <Folder Include="BLL\UserLogin\" />
     <Folder Include="DAL\" />
+    <Folder Include="DAL\A2S\" />
+    <Folder Include="DAL\Common\" />
     <Folder Include="public\" />
     <Folder Include="public\images\" />
     <Folder Include="public\javascripts\" />

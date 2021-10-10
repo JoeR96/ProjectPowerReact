@@ -1,18 +1,33 @@
-var Db = require('../DAL/database')
+var Db = require('../DAL/Common/database')
 var EXE = require('../BLL/Common/exercise');
+var uam = require('../BLL/UserLogin/loginHandler')
+var A2SDBAccess = require('../DAL/A2S/A2SDbAccess')
+const loginDbController = require('../DAL/Common/loginDbController');
+
 var express = require('express');
+var cookieParser = require("cookie-parser");
+var session = require('express-session');
 var bodyParser = require('body-parser');
-var uam = require('../BLL/UserLogin/loginHandler');
 var cors = require('cors');
-const { activeAccount, currentWeek } = require('../BLL/UserLogin/loginHandler');
+
+var session;
 var app = express();
 var router = express.Router();
+var port = process.env.PORT || 8090;
+var oneDay = 1000 * 60 * 60 * 24;
 
+app.listen(port);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors());
+app.use(cookieParser());
+app.use(session({
+    secret: 'cookie',
+    resave: false,
+    cookie: { maxAge: 30000 },
+    saveUninitialized: false,
+}));
 app.use('/api', router);
-
 
 router.use((request, response, next) => {
 
@@ -43,8 +58,9 @@ router.route('/exercises').get((request, response) => {
     })
 })
 
+
 router.route('/getExerciseView').get((request, response) => {
-    Db.returnWeeklyWorkout(0, 1).then((data) => {
+    A2SDBAccess.returnWeeklyWorkout(session.userid).then((data) => {
         response.json(data)
     })
 });
@@ -67,20 +83,30 @@ router.route('/newexercise')
 router.route('/postAmrapResult')
     .post((request, response) => {
         let amrapResult = { ...request.body }
-        Db.postAmrapResult(amrapResult).then(data => {
+ 
+        A2SDBAccess.postAmrapResult(amrapResult, session.userid).then(data => {
+            response.status(201).json(data);
+        })
+    })
+
+router.route('/scaffoldExercise')
+    .post((request, response) => {
+        let exerciseInfo = { ...request.body }
+        A2SDBAccess.scaffoldHyperTrophyTemplate(exerciseInfo,session.userid).then(data => {
             response.status(201).json(data);
         })
     })
 
 router.route('/login')
-.post((request, response) => {
-    let userAndPass = { ...request.body }
-    uam.login(userAndPass).then(data => {
-        response.status(201).json(data);
-    })
+    .post(async (request, response) => {
+        let userAndPass = { ...request.body }
+    if (uam.login(userAndPass)) {
+        var uid = await loginDbController.getUserId(userAndPass.data.username)
+        session = request.session;
+        session.userid = uid[0][0].UserId
+    }
 })
 
-
-var port = process.env.PORT || 8090;
-app.listen(port);
-
+module.exports = {
+    session: session
+}

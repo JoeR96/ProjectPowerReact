@@ -12,6 +12,7 @@
     <None Include="package.json" />
     <None Include="src\App.css" />
     <None Include="src\components\NavBar\SuperResponsiveTableStyle.css" />
+    <None Include="src\components\styles.css" />
     <None Include="src\components\SuperResponsiveTableStyle.css" />
     <None Include="src\logo.svg" />
   </ItemGroup>
@@ -20,6 +21,11 @@
     <Script Include="src\App.js" />
     <Script Include="src\App.test.js" />
     <Script Include="src\components\A2SDailyLiftView\A2SDailyLiftView.js" />
+    <Script Include="src\components\assets\jss\buttonStyle.js" />
+    <Script Include="src\components\assets\jss\customInputStyle.js" />
+    <Script Include="src\components\assets\jss\material-kit-react.js" />
+    <Script Include="src\components\Common\Button.js" />
+    <Script Include="src\components\Common\CustomInput.js" />
     <Script Include="src\components\Common\ExerciseCard.js" />
     <Script Include="src\components\Navbar.js" />
     <Script Include="src\components\NavBar\header.js" />
@@ -30,7 +36,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="src\components\NewFolder1\" />
+    <Folder Include="src\components\Login\" />
+    <Folder Include="src\components\NewFolder2\" />
+    <Folder Include="src\components\NewFolder3\" />
     <Folder Include="src\components\NewFolder\" />
+    <Folder Include="src\components\ScaffoldA2SExerciseForm\" />
   </ItemGroup>
   <!-- This target is copied from the ASP.NET SPA template in order to ensure node_modules are in place. -->
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

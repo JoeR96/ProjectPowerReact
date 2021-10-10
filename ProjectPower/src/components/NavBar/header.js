@@ -15,12 +15,18 @@ import {
     ListItemIcon,
 } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
-import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
+import {
+    BrowserRouter,
+    Route,
+    Switch,
+    Link
+} from "react-router-dom";
 
 // IMPORTING ICONS
 import MenuIcon from "@material-ui/icons/Menu";
 import SchoolIcon from "@material-ui/icons/School";
 import PersonIcon from "@material-ui/icons/Person";
+import A2SDailyLiftView from "../A2SDailyLiftView/A2SDailyLiftView";
 
 // REACT APP IMPORTS
 
@@ -61,10 +67,9 @@ const Header = (props) => {
         setAnchorEl(event.currentTarget);
     };
     return (
-        <Box pb={10}>
+        <Box pb={11}>
             <div className={classes.root}>
                 <HideOnScroll {...props}>
-                    <BrowserRouter>
                         <AppBar>
                             <Toolbar>
                                 <Typography
@@ -74,6 +79,7 @@ const Header = (props) => {
                                     className={classes.title}
                                 >
                                     Average 2 Savage BIG DICK CYCLES
+                                    {process.env.PUBLIC_URL}
                                 </Typography>
                                 {isMobile ? (
                                     <>
@@ -104,7 +110,7 @@ const Header = (props) => {
                                             <MenuItem
                                                 onClick={() => setAnchorEl(null)}
                                                 component={Link}
-                                                to={process.env.PUBLIC_URL + "/DailyLiftView"}
+                                                to={process.env.PUBLIC_URL + "/A2SDailyLiftView"}
                                             >
                                                 <ListItemIcon>
                                                     <SchoolIcon />
@@ -114,38 +120,39 @@ const Header = (props) => {
                                             <MenuItem
                                                 onClick={() => setAnchorEl(null)}
                                                 component={Link}
-                                                to={process.env.PUBLIC_URL + "/InputForm"}
+                                                to={process.env.PUBLIC_URL + "/Dashboard"}
                                             >
                                                 <ListItemIcon>
                                                     <PersonIcon />
                                                 </ListItemIcon>
-                                                <Typography variant="h6"> Conifgure Training Max</Typography>
+                                                <Typography variant="h6"> Dashboard</Typography>
                                             </MenuItem>
                                         </Menu>
                                     </>
                                 ) : (
                                     <div style={{ marginRight: "2rem" }}>
-                                        <Button variant="text" color="default" component={Link}
+                                            <Button
+                                                variant="text"
+                                                color="default"
+                                                component={Link}
                                             onClick={() => setAnchorEl(null)}
-                                            to={process.env.PUBLIC_URL + "/InputForm"}>
+                                            to={process.env.PUBLIC_URL + "/Dashboard"}>
                                             <PersonIcon />
-                                            Configure Training Maxes
+                                            Dashboard
                                         </Button>
-                                        <Button variant="text" color="default" component={Link}
+                                            <Button
+                                                variant="text"
+                                                color="default"
+                                                component={Link}
                                             onClick={() => setAnchorEl(null)}
-                                            to={process.env.PUBLIC_URL + "/DailyLiftView"}>
+                                            to={process.env.PUBLIC_URL + "/A2SDailyLiftView"}>
                                             <PersonIcon />
-                                            Configure Training Maxes
+                                            Current Workout
                                         </Button>
                                     </div>
                                 )}
                             </Toolbar>
                         </AppBar>
-                        <Switch>
-
-                       
-                        </Switch>
-                    </BrowserRouter>
                 </HideOnScroll>
             </div>
         </Box>
