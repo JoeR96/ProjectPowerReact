@@ -17,8 +17,6 @@ function App() {
 
     return (
         <div className="App">
-            <ScaffoldA2SExerciseForm>
-            </ScaffoldA2SExerciseForm>
             <Router>
                 <Header></Header>
                 <Switch>

@@ -13,21 +13,22 @@ import React, {
 export default class ScaffoldA2SExerciseForm extends Component {
     state = {
         exerciseName: "",
-        auxiliaryLift: 0,
+        auxiliaryLift: false,
         trainingMax: 0.00,
-        block: ""
+        block: "HypertrophyBlock",
+        scaffoldAll: true
     }
     handleSubmit = this.handleSubmit.bind(this);
 
 
     handleChange = e => {
         this.setState({ [e.currentTarget.id]: e.currentTarget.value });
-        console.log(e)
+        console.log(e.currentTarget.id)
     };
 
     handleSelectChange = e => {
         this.setState({ [e.currentTarget.id]: e.target.value });
-        console.log(e.target.value)
+        console.log(e.currentTarget.id)
     };
 
     handleSubmit(e) {
@@ -36,14 +37,12 @@ export default class ScaffoldA2SExerciseForm extends Component {
             exerciseName: this.state.exerciseName,
             auxiliaryLift: this.state.auxiliaryLift,
             trainingMax: this.state.trainingMax,
-            block: this.state.block
+            block: this.state.block,
+            scaffoldAll: this.state.scaffoldAll
         }
-
-        Axios.post('http://localhost:1337/api/scaffoldExercise', {
-            exerciseName: this.state.exerciseName,
-            auxiliaryLift: this.state.auxiliaryLift,
-            trainingMax: this.state.trainingMax,
-            block: this.state.block })
+        console.log(this.scaffoldAll)
+        console.log(data.scaffoldAll)
+        Axios.post('http://localhost:1337/api/scaffoldExercise', data)
             .then(res => {
 
             })
@@ -92,6 +91,15 @@ export default class ScaffoldA2SExerciseForm extends Component {
                     >
                         <MenuItem id="auxiliaryLift" value={true}>Yes</MenuItem>
                         <MenuItem id="auxiliaryLift" value={false}>No</MenuItem>
+                    </Select>
+                    <Select
+                        id="scaffoldAll"
+                        label="scaffoldAll"
+                        onChange={this.handleSelectChange}
+                        defaultValue={true}
+                    >
+                        <MenuItem id="scaffoldAll" value={true}>Yes</MenuItem>
+                        <MenuItem id="scaffoldAll" value={false}>No</MenuItem>
                     </Select>
                     <Button onClick={this.handleSubmit} type="submit" color="primary" className="form__custom-button">
                         Submit

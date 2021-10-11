@@ -2,8 +2,10 @@ import React from 'react'
 import { Grid } from '@material-ui/core';
 import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
+import Divider from "@material-ui/core/Divider";
 import { BrowserRouter as Router, Route, Switch, withRouter } from "react-router-dom";
 import DashboardCard from '../Common/DashboardCard'
+
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
@@ -16,53 +18,66 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-
-
 function Dashboard() {
     const classes = useStyles();
-    const data = [{
-        title: "WIZARD",
-        description: "spaceAids",
-        image:""
-    }, {
+    const data = [
+        {
+            title: "LOGIN",
+            description: "spaceAids",
+            image: "",
+            route: "/Login"
+        },
+        {
+            title: "Current Workout",
+            description: "Display weekly workout cards",
+            image: "",
+            route: "/A2SDailyLiftView"
+        },
+        {
+            title: "Scaffold Workout",
+            description: "Add exercise to db",
+            image: "",
+            route: "/ScaffoldA2SExerciseForm"
+        },
+        {
+            title: "Current Workout",
+            description: "Display weekly workout cards",
+            image: "",
+            route: "/A2SDailyLiftView"
+        },
+        {
+            title: "Current Workout",
+            description: "Display weekly workout cards",
+            image: "",
+            route: "/A2SDailyLiftView"
+        },
+        {
             title: "Current Workout",
             description: "Display weekly workout cards",
             image: "",
             route: "/A2SDailyLiftView"
         }]
+    
     return (
-        <React.Fragment>
-            <Grid align="center" justify="center" alignItems="center" >
-                <Grid container spacing={5}>
-                    <Grid item xs={4}>
-                        <DashboardCard props={data}>
-                        </DashboardCard>
+        <Grid container spacing={3}>
+            {data.map(d => (
+                <Grid item xs={6} align="center">
+                    <DashboardCard props={d}>
+                    </DashboardCard>
+                    <Grid container spacing={3}>
+                        <Grid item xs={6}>
+                            <Grid container>
+                                <Grid container justify="center">
+                                    {d.description}
+                                </Grid>
+                            </Grid>
+                            <Divider light />
+                        </Grid>
                     </Grid>
-                    <Grid item xs={4}>
-                        <DashboardCard props={data}>
-                        </DashboardCard>
-                    </Grid>
-                    <Grid item xs={4}>
-                        <DashboardCard props={data}>
-                        </DashboardCard>
-                    </Grid>}
-                </Grid>}
-                <Grid container spacing={5}>
-                    <Grid item xs={4}>
-                        <DashboardCard props={data}>
-                        </DashboardCard>
-                    </Grid>
-                    <Grid item xs={4}>
-                        <DashboardCard props={data}>
-                        </DashboardCard>
-                    </Grid>
-                    <Grid item xs={4}>
-                        <DashboardCard props={data}>
-                        </DashboardCard>
-                    </Grid>
-                </Grid>             
-            </Grid>
-        </React.Fragment>
+                </Grid>
+
+            ))}
+        </Grid>
         )
 }
 

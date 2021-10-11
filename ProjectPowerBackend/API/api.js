@@ -35,7 +35,7 @@ router.use((request, response, next) => {
 });
 
 router.route('/exercise/:id').get((request, response) => {
-    Db.getExerciseTemplate(request.params.id).then((data) => {
+    Db.getExerciseTemplate(request.params.id, request.session.userid).then((data) => {
         response.json(data);
     })
 })
@@ -46,11 +46,7 @@ router.route('/exerciseHtt/:exerciseName/:trainingMax').get((request, response) 
     })
 })
 
-router.route('/getExerciseTemplate/:id').get((request, response) => {
-    Db.getExerciseTemplate(request.params.id).then((data) => {
-        response.json(data[0]);
-    })
-})
+
 
 router.route('/exercises').get((request, response) => {
     Db.getExercises().then((data) => {

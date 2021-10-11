@@ -145,47 +145,61 @@ async function returnWeeklyWorkout(userid) {
         }
     }
 
-async function scaffoldHyperTrophyTemplate(exercise,userid) {
-    for (let i = 0; i < A2SHTTDefaultData.HypertrophyBlock.PrimaryLift.amrapRepTarget.length; i++) {
-        let currentBlock = {}
-       
-        try {
-            if (exercise.auxiliaryLift == true) {
-                currentBlock = blocks[activeBlock].AuxillaryLift
+async function scaffoldHyperTrophyTemplate(exercise, userid) {
+    var length = 1
+    var week = 1;
+    if (exercise.scaffoldAll == true) {
+        length = blocks.length
+    }
+    var blockName = scaffoldHyperTrophyTemplate
+  
+    for (var j = 0; j < length; j++) {
+        
+        
+        for (let i = 0; i < A2SHTTDefaultData.HypertrophyBlock.PrimaryLift.amrapRepTarget.length; i++) {
+            let currentBlock = {}
+
+            try {
+                if (exercise.auxiliaryLift == true) {
+                    currentBlock = blocks[activeBlock].AuxillaryLift
+                }
+                else {
+                    currentBlock = blocks[activeBlock].PrimaryLift
+                }
+
+                let pool = await sql.connect(config);
+
+                    await pool.request()
+                        .input('Name', sql.NVarChar(50), exercise.exerciseName)
+                        .input('Block', sql.NVarChar(50), exercise.block)
+                        .input('TrainingMax', sql.Decimal(18, 3), exercise.trainingMax)
+                        .input('AmrapRepTarget', sql.Int, currentBlock.amrapRepTarget[i])
+                        .input('Week', sql.Int, week)
+                        .input('Auxillary', sql.Bit, exercise.auxillaryLift ? 1 : 0)
+                        .input('Intensity', sql.Decimal(18, 3), currentBlock.intensity[i])
+                        .input('RepsPerSet', sql.Int, currentBlock.repsPerSet[i])
+                        .input('UserID', sql.Int, userid)
+                        .input('Sets', sql.Int, currentBlock.sets)
+                        .execute('ScaffoldA2SHypertrophyBlock');
+                    console.log(currentBlock.intensity[i])
+
             }
-            else {
-                currentBlock = blocks[activeBlock].PrimaryLift
+            catch (err) {
+                console.log(err);
             }
-            var n = currentBlock.intensity[i].toFixed(3);
-            console.log("BLOCK" + currentBlock.intensity[i])
-            let pool = await sql.connect(config);
-            await pool.request()
-                .input('Name', sql.NVarChar(50), exercise.exerciseName)
-                .input('Block', sql.NVarChar(50), exercise.block)
-                .input('TrainingMax', sql.Decimal(18, 3), exercise.trainingMax)
-                .input('AmrapRepTarget', sql.Int, currentBlock.amrapRepTarget[i])
-                .input('Week', sql.Int, i + 1)
-                .input('Auxillary', sql.Bit, exercise.auxillaryLift ? 1 : 0)
-                .input('Intensity', sql.Decimal(18, 3), currentBlock.intensity[i])
-                .input('RepsPerSet', sql.Int, currentBlock.repsPerSet[i])
-                .input('UserID', sql.Int, userid)
-                .input('Sets', sql.Int, currentBlock.sets)
-                .execute('ScaffoldA2SHypertrophyBlock');
-            console.log(currentBlock.intensity[i])
-            console.log(typeof (currentBlock.intensity[i]))
-            
+            week++;
         }
-        catch (err) {
-            console.log(err);
-        }
+        activeBlock++;
     }
 }
 
-async function getExerciseTemplate(name) {
+async function getExerciseTemplate(name,userid) {
     try {
         let pool = await sql.connect(config);
-        let exercise = await pool.request().input('inputField1', sql.NVarChar, name)
-            .query("SELECT * FROM A2SHyperTrophyTemplate WHERE Week = 1");
+        let exercise = await pool.request()
+            .input('UserId', sql.Int, userid)
+            .input('ExerciseName', sql.NVarChar(50),name)
+            .execute('GetWorkoutExercises');
 
         return exercise.recordsets;
     }

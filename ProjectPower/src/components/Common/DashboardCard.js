@@ -7,22 +7,24 @@ import { CardActionArea } from '@mui/material';
 import {
     Redirect
 } from "react-router-dom";
-export default function DashboardCard(props) {
-    console.log(props)
-    console.log(props.props)
+import { useState } from "react";
 
-
+export default function DashboardCard(title) {
+    const [redirectToReferrer, setRedirectToReferrer] = useState(false)
+    
+    if (redirectToReferrer) {
+        return <Redirect to={title.props.route}/>
+    }
     return (
         <Card sx={{ maxWidth: 345 }}>
-            <CardActionArea onClick={() => <Redirect to="/A2SDailyLiftView" />}>
+            <CardActionArea onClick={() => setRedirectToReferrer((true))}>
                 
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
-                        {props.props.title}
-                        
+                        {title.props.title}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
-                        {props.props.description}
+                  
                     </Typography>
                 </CardContent>
             </CardActionArea>
