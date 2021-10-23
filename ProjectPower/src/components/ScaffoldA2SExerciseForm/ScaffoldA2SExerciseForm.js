@@ -34,15 +34,15 @@ export default class ScaffoldA2SExerciseForm extends Component {
     handleSubmit(e) {
         e.preventDefault();
         const data = {
-            exerciseName: this.state.exerciseName,
-            auxiliaryLift: this.state.auxiliaryLift,
-            trainingMax: this.state.trainingMax,
-            block: this.state.block,
-            scaffoldAll: this.state.scaffoldAll
+            Name: this.state.exerciseName,
+            AuxillaryLift: this.state.auxiliaryLift,
+            TrainingMax: this.state.trainingMax,
+            Username: localStorage.getItem("username")
+
         }
-        console.log(this.scaffoldAll)
-        console.log(data.scaffoldAll)
-        Axios.post('http://localhost:1337/api/scaffoldExercise', data)
+        JSON.stringify(data);
+        console.log(data)
+        Axios.post('https://localhost:44317/A2SWorkout', data)
             .then(res => {
 
             })

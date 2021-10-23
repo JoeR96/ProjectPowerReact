@@ -9,40 +9,44 @@ import Button from 'mui-button'
 import TextField from '@mui/material/TextField';
 import axios from 'axios';
 
-function Submit(amrap) {
-    axios.post('http://192.168.8.102:1337/api/postAmrapResult', { amrap })
+function Submit(amrapRepResult,exerciseid) {
+    const config = { 
+        headers: {
+            'Content-Type': 'application/json'
+        } 
+    };
+    
+    JSON.stringify(amrapRepResult)
+    axios.put('https://localhost:44317/A2SWorkout/'+exerciseid , {amrapRepResult:amrapRepResult}, config )
 }
 
-function ExerciseCard(props, index) {
-
-    const [amrapCount, setAmrapCount] = React.useState(null);
-    const exerciseName = props.props.ExerciseName
+function ExerciseCard(props) {
+    console.log(props)
+    const [amrapRepResult, setAmrapCount] = React.useState(null);
+    const [exerciseId, setExerciseId] = React.useState(null);
 
     return (
         <Card sx={{ minWidth: 125 }}>
             <CardContent style={{ backgroundColor: "grey" }}>
                 <Typography sx={{ fontSize: 36 }} color="text.primary" gutterBottom>
-                        {props.props.ExerciseName}            
+                        {props.props.exerciseName}            
                 </Typography>
                 <Typography variant="h5" component="div">
-                        {props.props.WorkingWeight + ' KG' }
+                        {props.props.workingWeight + ' KG' }
                 </Typography>
                 <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                    {'Sets ' + props.props.Sets}
+                    {'Sets ' + props.props.sets}
                 </Typography>
                 <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                    {'Amrap ' + props.props.AmrapTarget}
+                    {'Amrap ' + props.props.amrapTarget}
                 </Typography>
                 <Typography variant="body2">
-                    <input value={amrapCount} onInput={e => setAmrapCount(e.target.value)} />
+                    <input value={amrapRepResult} onInput={e => setAmrapCount(e.target.value)} />
                     
                     <br />
                     <Box m={2} pt={3}>
                         <Button onClick={() => {
-                            Submit({
-                                AmrapCount: amrapCount,
-                                ExerciseName: exerciseName
-                            })
+                            Submit(amrapRepResult,props.props.id)
                         }} variant="contained" size="Large">
                             Submit
                         </Button>

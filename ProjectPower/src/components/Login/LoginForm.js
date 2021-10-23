@@ -18,20 +18,25 @@ export default class App extends Component {
     handleSubmit = this.handleSubmit.bind(this);
 
     handleChange = e => {
-        this.setState({ [e.currentTarget.id]: e.currentTarget.value });
-        
+        this.setState({ [e.currentTarget.id]: e.currentTarget.value });    
     };
 
     handleSubmit(e) {
         e.preventDefault();
         const data = {
-            username: this.state.username,
-            password: this.state.password,
+            Username: this.state.username,
+            Password: this.state.password
         }
-        
-        Axios.post('http://localhost:1337/api/login', { data })
+        JSON.stringify(data);
+
+        Axios.post('https://localhost:44317/UserAccounts/Login',  data )
             .then(res => {
 
+                    localStorage.clear();
+                    localStorage.setItem('username',res.data.userName)
+                    localStorage.setItem('day',res.data.currentDay)
+                    localStorage.setItem('week',res.data.currentWeek)
+   
             })
         this.setState({ redirectToReferrer: true })
     }

@@ -208,12 +208,6 @@ async function getExerciseTemplate(name,userid) {
     }
 }
 
-
-
-    
-
-
-
     async function returnWeeklyWorkout(userid) {
 
         var currentWeekAndDay = await getCurrentUserWeekAndDay(userid)
