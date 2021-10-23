@@ -1,6 +1,0 @@
-C:\Users\Joe\Express\obj\Debug\ProjectPowerAPI.njsproj.AssemblyReference.cache
-C:\Users\Joe\Express\obj\Debug\ProjectPowerAPI.njsproj.CoreCompileInputs.cache
-C:\Users\Joe\Express\bin\Microsoft.NodejsTools.WebRole.dll
-C:\Users\Joe\ProjectPower\ProjectPower\ProjectPowerApi\obj\Debug\ProjectPowerAPI.njsproj.AssemblyReference.cache
-C:\Users\Joe\ProjectPower\ProjectPower\ProjectPowerApi\obj\Debug\ProjectPowerAPI.njsproj.CoreCompileInputs.cache
-C:\Users\Joe\ProjectPower\ProjectPower\ProjectPowerApi\bin\Microsoft.NodejsTools.WebRole.dll
