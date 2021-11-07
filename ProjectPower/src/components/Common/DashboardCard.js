@@ -9,22 +9,22 @@ import {
 } from "react-router-dom";
 import { useState } from "react";
 
-export default function DashboardCard(title) {
+export default function DashboardCard(props) {
     const [redirectToReferrer, setRedirectToReferrer] = useState(false)
     
     if (redirectToReferrer) {
-        return <Redirect to={title.props.route}/>
+        return <Redirect to={props.props.route}/>
     }
     return (
-        <Card sx={{ maxWidth: 345 }}>
+        <Card sx={{ maxWidth: 69*5}}>
             <CardActionArea onClick={() => setRedirectToReferrer((true))}>
                 
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
-                        {title.props.title}
+                        {props.props.title}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
-                  
+                        {props.props.description}
                     </Typography>
                 </CardContent>
             </CardActionArea>
