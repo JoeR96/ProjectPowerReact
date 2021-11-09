@@ -1,5 +1,5 @@
 import React from 'react'
-import { Grid } from '@material-ui/core';
+import { Grid,Container } from '@material-ui/core';
 import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
 import Divider from "@material-ui/core/Divider";
@@ -25,59 +25,55 @@ function Dashboard() {
             title: "LOGIN",
             description: "spaceAids",
             image: "",
-            route: "/Login"
+            route: "/Login",
+            id: 1
         },
         {
             title: "Current Workout",
             description: "Display weekly workout cards",
             image: "",
-            route: "/A2SDailyLiftView"
+            route: "/A2SDailyLiftView",
+            id: 2
         },
         {
             title: "Scaffold Workout",
             description: "Add exercise to db",
             image: "",
-            route: "/ScaffoldA2SExerciseForm"
+            route: "/ScaffoldA2SExerciseForm",
+            id: 3
+        },
+        {
+            title: "Create Workout",
+            description: "Create workout",
+            image: "",
+            route: "/WorkoutCreator",
+            id: 4
         },
         {
             title: "Current Workout",
             description: "Display weekly workout cards",
             image: "",
-            route: "/A2SDailyLiftView"
+            route: "/A2SDailyLiftView",
+            id: 5
         },
         {
             title: "Current Workout",
             description: "Display weekly workout cards",
             image: "",
-            route: "/A2SDailyLiftView"
-        },
-        {
-            title: "Current Workout",
-            description: "Display weekly workout cards",
-            image: "",
-            route: "/A2SDailyLiftView"
+            route: "/A2SDailyLiftView",
+            id: 6
         }]
     
     return (
-        <Grid container spacing={3}>
-            {data.map(d => (
-                <Grid item xs={6} align="center">
-                    <DashboardCard props={d}>
-                    </DashboardCard>
-                    <Grid container spacing={3}>
-                        <Grid item xs={6}>
-                            <Grid container>
-                                <Grid container justify="center">
-                                    {d.description}
-                                </Grid>
-                            </Grid>
-                            <Divider light />
-                        </Grid>
-                    </Grid>
-                </Grid>
-
-            ))}
-        </Grid>
+        <Container>
+            <Grid>
+                {data.map(d => (             
+                    <Grid item key ={d.key} xs={4}md={6}lg={4}>
+                        <DashboardCard props={d}></DashboardCard>
+                    </Grid>                          
+                ))}
+            </Grid>
+        </Container>
         )
 }
 

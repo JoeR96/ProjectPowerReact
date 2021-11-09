@@ -16,10 +16,7 @@ function A2SDailyLiftView() {
         console.log(userinfo)
         axios.post("https://localhost:44317/A2SWorkout/DailyWorkout",userinfo)
             .then(function (response){
-                console.log(response.data)
- 
                  setData(response.data);
-                  console.log(response.data)
             })
            
     }, []);
