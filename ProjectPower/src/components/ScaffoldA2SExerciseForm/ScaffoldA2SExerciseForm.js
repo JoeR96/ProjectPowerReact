@@ -12,14 +12,15 @@ import React, {
 
 export default class ScaffoldA2SExerciseForm extends Component {
     state = {
+        currentExercise : {
         exerciseName: "",
         auxiliaryLift: false,
-        trainingMax: 0.00,
-        block: "HypertrophyBlock",
-        scaffoldAll: true
-    }
+        trainingMax: 0.00
+    },
+    exerciseCollection:[]
+}
     handleSubmit = this.handleSubmit.bind(this);
-
+     exerciseCollection = [];
 
     handleChange = e => {
         this.setState({ [e.currentTarget.id]: e.currentTarget.value });
@@ -31,22 +32,17 @@ export default class ScaffoldA2SExerciseForm extends Component {
         console.log(e.currentTarget.id)
     };
 
+    
+    
     handleSubmit(e) {
         e.preventDefault();
         const data = {
             Name: this.state.exerciseName,
             AuxillaryLift: this.state.auxiliaryLift,
             TrainingMax: this.state.trainingMax,
-            Username: localStorage.getItem("username")
-
         }
-        JSON.stringify(data);
-        console.log(data)
-        Axios.post('https://localhost:44317/A2SWorkout', data)
-            .then(res => {
 
-            })
-        console.log(data);
+        this.state.exerciseCollection.push(data);
     }
 
 
@@ -73,16 +69,7 @@ export default class ScaffoldA2SExerciseForm extends Component {
                         handleChange={this.handleChange}
                         type="number"
                     />
-                    <Select
-                        id="block"
-                        label="block"
-                        onChange={this.handleSelectChange}
-                        defaultValue={"HypertrophyBlock"}
-                    >
-                        <MenuItem id="block" value={"HypertrophyBlock"}>Hypertrophy Block</MenuItem>
-                        <MenuItem id="block" value={"StrengthBlock"}>Strength Block</MenuItem>
-                        <MenuItem id="block" value={"PeakingBlock"}>Peaking Block</MenuItem>
-                    </Select>
+
                     <Select
                         id="auxiliaryLift"
                         label="auxiliaryLift"
@@ -92,15 +79,7 @@ export default class ScaffoldA2SExerciseForm extends Component {
                         <MenuItem id="auxiliaryLift" value={true}>Yes</MenuItem>
                         <MenuItem id="auxiliaryLift" value={false}>No</MenuItem>
                     </Select>
-                    <Select
-                        id="scaffoldAll"
-                        label="scaffoldAll"
-                        onChange={this.handleSelectChange}
-                        defaultValue={true}
-                    >
-                        <MenuItem id="scaffoldAll" value={true}>Yes</MenuItem>
-                        <MenuItem id="scaffoldAll" value={false}>No</MenuItem>
-                    </Select>
+                  
                     <Button onClick={this.handleSubmit} type="submit" color="primary" className="form__custom-button">
                         Submit
                     </Button>

@@ -1,12 +1,12 @@
 import React,{useState,useEffect} from 'react'
 import { DragDropContext,Droppable,Draggable } from 'react-beautiful-dnd'
 import axios from 'axios';
-function Reactdnd1() {
+import Button from '../Common/Button'
+function Reactdnd1(exercises) {
     //fetch user workout days from db
     const numberOfWorkoutDays = 4;
     const workoutColumns = {
             unassigned: {
-                name: 'unassigned',
                 items: []
             }
         }
@@ -82,6 +82,24 @@ function Reactdnd1() {
             
     }, []);
 
+var arr = []
+ function updateLiftDayAndOrder(){
+        if(columns.unassigned.items.length > 0)
+        {
+            throw 'unassigned exercises remain!'
+            
+        }
+        const ex = Object.values(columns)
+    
+        for (let index = 0; index < numberOfWorkoutDays; index++) {
+            var objectToAdd={exercises : Object.values(ex[index].items)
+            }
+            arr[index] = objectToAdd     
+        }
+
+        const exerciseDaysAndOrders = {exerciseDaysAndOrders:arr}
+        axios.post('https://localhost:44317/A2SWorkout/UpdateDayAndPriority',exerciseDaysAndOrders)
+    }
 
     if(isLoading)
     {
@@ -153,6 +171,11 @@ function Reactdnd1() {
                     )
                 })}
             </DragDropContext>
+            <Button onClick={
+    updateLiftDayAndOrder
+    }  id="redirectToReferrer" type="submit" color="primary" className="form__custom-button">
+                    Log in
+                </Button>
         </div>
     )
     }

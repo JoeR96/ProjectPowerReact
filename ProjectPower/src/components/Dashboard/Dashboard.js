@@ -6,21 +6,7 @@ import Divider from "@material-ui/core/Divider";
 import { BrowserRouter as Router, Route, Switch, withRouter } from "react-router-dom";
 import DashboardCard from '../Common/DashboardCard'
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-        flexGrow: 1,
-    },
-    paper: {
-        padding: theme.spacing(1), //grid padding
-        textAlign: 'center',
-        color: theme.palette.text.secondary,
-        height: 200
-    },
-}));
-
-function Dashboard() {
-    const classes = useStyles();
-    const data = [
+const data = [
         {
             title: "LOGIN",
             description: "spaceAids",
@@ -63,6 +49,10 @@ function Dashboard() {
             route: "/A2SDailyLiftView",
             id: 6
         }]
+
+function Dashboard() {
+    
+    
     
     return (
         <Container>
