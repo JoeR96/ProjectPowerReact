@@ -1,9 +1,10 @@
-import React,{useState,useEffect} from 'react'
+import React,{useState,useEffect,useImperativeHandle } from 'react'
 import { DragDropContext,Droppable,Draggable } from 'react-beautiful-dnd'
 import axios from 'axios';
 import Button from '../Common/Button'
-function Reactdnd1(exercises) {
+function Reactdnd1(exercises,childFunc) {
     //fetch user workout days from db
+     
     const numberOfWorkoutDays = 4;
     const workoutColumns = {
             unassigned: {
@@ -16,14 +17,27 @@ function Reactdnd1(exercises) {
             items:[]
         }
         
-        workoutColumns[index] = objectToAdd 
+         workoutColumns[index] = objectToAdd 
     }
     const [isLoading,setIsLoading] = useState(true)
     const [columns,setColumns] = useState(workoutColumns)
-    const [data, setData] = React.useState([]);
+
+    function updateColumns(){
+        console.log(exercises.exercises)
+        console.log("hello")
+        workoutColumns.unassigned.items = [...workoutColumns.unassigned.items,exercises.exercises]
+        setColumns(workoutColumns)
+    }
+     
+
+    useEffect(()=> {
+        updateColumns();
+        console.log(workoutColumns.unassigned.items)
     
+    },[])
 
     const onDragEnd = (result, columns, setColumns) => {
+        
         if(!result.destination) return;
         const {source,destination} = result;
         if(source.droppableId !== destination.droppableId){
@@ -61,26 +75,7 @@ function Reactdnd1(exercises) {
         }
        
     }
-    useEffect(() => {
-        
-            async function GetData(){
-                var username = localStorage.getItem("username").toString()
-                var x = await axios.get('https://localhost:44317/A2SWorkout/UnassignedExercises?Term='+username)          
-                return x  
-                };
-
-            const fetchData = async () => {
-            const res = await GetData(); 
-            setData(res)
-            workoutColumns.unassigned.items = res.data
-            console.log(workoutColumns.unassigned.items)
-            setIsLoading(false)
-            console.log(columns)
-                     }
-            fetchData();
-            
-            
-    }, []);
+  
 
 var arr = []
  function updateLiftDayAndOrder(){
@@ -101,16 +96,7 @@ var arr = []
         axios.post('https://localhost:44317/A2SWorkout/UpdateDayAndPriority',exerciseDaysAndOrders)
     }
 
-    if(isLoading)
-    {
-    return (
-        <div>
-            hello
-        </div>
-    );
-    }
-    if(!isLoading)
-    {
+    
         return(
         
         <div style={{display: 'flex',justifyContent:'center',height:'100%'}}>
@@ -180,6 +166,6 @@ var arr = []
     )
     }
     
-}
+
 
 export default Reactdnd1

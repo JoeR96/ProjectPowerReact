@@ -11,17 +11,17 @@ import React, {
 } from "react";
 
 export default class ScaffoldA2SExerciseForm extends Component {
-    state = {
-        currentExercise : {
-        exerciseName: "",
-        auxiliaryLift: false,
-        trainingMax: 0.00
-    },
-    exerciseCollection:[]
-}
+    constructor(props) {
+        super(props)
+        this.state = {
+            name: props.name,
+            idIndex: parseInt(1)
+        }
+    }
+    
     handleSubmit = this.handleSubmit.bind(this);
      exerciseCollection = [];
-
+    
     handleChange = e => {
         this.setState({ [e.currentTarget.id]: e.currentTarget.value });
         console.log(e.currentTarget.id)
@@ -33,16 +33,18 @@ export default class ScaffoldA2SExerciseForm extends Component {
     };
 
     
-    
+   
     handleSubmit(e) {
         e.preventDefault();
         const data = {
             Name: this.state.exerciseName,
             AuxillaryLift: this.state.auxiliaryLift,
             TrainingMax: this.state.trainingMax,
+            uniqueId: this.state.idIndex.toString()
         }
-
-        this.state.exerciseCollection.push(data);
+        this.setState({idIndex: this.state.idIndex + 1})
+        this.props.handler(data)
+       
     }
 
 
