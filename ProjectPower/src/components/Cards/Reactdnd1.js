@@ -116,8 +116,8 @@ var arr = []
                                                 style={{
                                                     background: snapshot.isDraggingOver ? 'lightblue' :'lightgrey',
                                                     padding: 4,
-                                                    width: 250,
-                                                    minHeight: 500
+                                                    width: 200,
+                                                    minHeight: 375
                                                 }}
                                             >
                                                 {column.items.map((item,index) => {
@@ -157,11 +157,11 @@ var arr = []
                     )
                 })}
             </DragDropContext>
-            <Button onClick={
+            {/* <Button onClick={
     updateLiftDayAndOrder
     }  id="redirectToReferrer" type="submit" color="primary" className="form__custom-button">
                     Log in
-                </Button>
+                </Button> */}
         </div>
     )
     }

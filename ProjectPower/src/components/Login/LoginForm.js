@@ -29,7 +29,7 @@ export default class App extends Component {
         }
         JSON.stringify(data);
 
-        Axios.post('https://localhost:44317/UserAccounts/Login',  data )
+        Axios.post('https://192.168.8.102:44317/UserAccounts/Login',  data )
             .then(res => {
                     localStorage.clear();
                     localStorage.setItem('username',res.data.userName)
