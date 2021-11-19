@@ -40,7 +40,6 @@ export default class App extends Component {
         this.setState({ redirectToReferrer: true })
     }
 
-
     render() {
         const redirectToReferrer = this.state.redirectToReferrer;
         if (redirectToReferrer) {
