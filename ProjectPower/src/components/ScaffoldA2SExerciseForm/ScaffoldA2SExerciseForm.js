@@ -2,6 +2,7 @@ import Select from '@material-ui/core/Select'
 import MenuItem from '@material-ui/core/MenuItem'
 import CustomInput from '../Common/CustomInput'
 import Button from '../Common/Button'
+import { v4 as uuidv4 } from 'uuid';
 import Axios from 'axios'
 import {
     Redirect
@@ -36,13 +37,16 @@ export default class ScaffoldA2SExerciseForm extends Component {
    
     handleSubmit(e) {
         e.preventDefault();
+        this.setState({idIndex: this.state.idIndex + 1})
         const data = {
             Name: this.state.exerciseName,
             AuxillaryLift: this.state.auxiliaryLift,
             TrainingMax: this.state.trainingMax,
-            uniqueId: this.state.idIndex.toString()
+            uniqueId: uuidv4(),
+            liftDay: 0,
+            liftOrder: 0
         }
-        this.setState({idIndex: this.state.idIndex + 1})
+        
         this.props.handler(data)
        
     }

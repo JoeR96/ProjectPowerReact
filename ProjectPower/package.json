@@ -30,6 +30,7 @@
     "styled-components": "^5.3.1",
     "swagger-editor": "^3.18.2",
     "typeface-cormorant": "^1.1.13",
+    "uuid": "^8.3.2",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
