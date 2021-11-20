@@ -233,11 +233,11 @@ var arr = []
                   
                 })}
             </DragDropContext>
-            {/* <Button onClick={
+            <Button onClick={
     updateLiftDayAndOrder
     }  id="redirectToReferrer" type="submit" color="primary" className="form__custom-button">
                     Log in
-                </Button> */}
+                </Button>
         </div>
     )
             }

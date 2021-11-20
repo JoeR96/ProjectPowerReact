@@ -44,7 +44,8 @@ export default class ScaffoldA2SExerciseForm extends Component {
             TrainingMax: this.state.trainingMax,
             uniqueId: uuidv4(),
             liftDay: 0,
-            liftOrder: 0
+            liftOrder: 0,
+            template: 'HyperTrophy'
         }
         
         this.props.handler(data)
@@ -86,6 +87,16 @@ export default class ScaffoldA2SExerciseForm extends Component {
                         <MenuItem id="auxiliaryLift" value={false}>No</MenuItem>
                     </Select>
                   
+                    <Select
+                        id="auxiliaryLift"
+                        label="auxiliaryLift"
+                        onChange={this.handleSelectChange}
+                        defaultValue={true}
+                    >
+                        <MenuItem id="auxiliaryLift" value={true}>Hypertrophy</MenuItem>
+                        <MenuItem id="auxiliaryLift" value={false}>RepsThenSet</MenuItem>
+                    </Select>
+
                     <Button onClick={this.handleSubmit} type="submit" color="primary" className="form__custom-button">
                         Submit
                     </Button>
