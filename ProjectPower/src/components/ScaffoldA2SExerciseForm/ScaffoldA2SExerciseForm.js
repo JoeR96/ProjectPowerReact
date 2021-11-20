@@ -3,10 +3,6 @@ import MenuItem from '@material-ui/core/MenuItem'
 import CustomInput from '../Common/CustomInput'
 import Button from '../Common/Button'
 import { v4 as uuidv4 } from 'uuid';
-import Axios from 'axios'
-import {
-    Redirect
-} from "react-router-dom";
 import React, {
     Component
 } from "react";
@@ -47,7 +43,6 @@ export default class ScaffoldA2SExerciseForm extends Component {
             liftOrder: 0,
             template: 'HyperTrophy'
         }
-        
         this.props.handler(data)
        
     }

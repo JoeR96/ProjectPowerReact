@@ -2,8 +2,7 @@ import React, { Component, useState,useEffect,useRef } from "react";
 import { Grid,Container } from '@material-ui/core';
 import Reactdnd1 from "../Cards/Reactdnd1";
 import ScaffoldA2SExerciseForm from "../ScaffoldA2SExerciseForm/ScaffoldA2SExerciseForm";
-import Button from '../Common/Button'
-import axios from "axios";
+import CreateExerciseWithTemplate from "../ScaffoldA2SExerciseForm/CreateExerciseWithTemplate";
 
 function DragList() { 
   
@@ -23,10 +22,12 @@ function DragList() {
     <Grid item md={12} >
       <Reactdnd1  ref={cref} exercises = {exercises}></Reactdnd1>
     </Grid>
-    <Grid item xs={6} lg={3} md={3} sm={6} xl={3} >
-      <ScaffoldA2SExerciseForm handler = {UpdateState}></ScaffoldA2SExerciseForm >
-      
-    </Grid>
+      <Grid item xs={6} lg={3} md={3} sm={6} xl={3} >
+        <ScaffoldA2SExerciseForm handler = {UpdateState}></ScaffoldA2SExerciseForm >
+      </Grid>
+      <Grid item xs={6} lg={3} md={3} sm={6} xl={3} >
+        <CreateExerciseWithTemplate ></CreateExerciseWithTemplate >
+      </Grid>
    </Grid>
   );
   }

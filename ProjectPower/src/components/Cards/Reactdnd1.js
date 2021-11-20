@@ -29,9 +29,7 @@ function Reactdnd1(exercises,ref) {
 
     function updateColumns(val){
         setColumns(cols => {
-
             var filtered =[]
-            console.log(cols)
 
             for (let day = 0; day < columns.length; day++) {
                 const exercises = columns[index];
@@ -135,8 +133,7 @@ var arr = []
  function updateLiftDayAndOrder(){
         if(columns.unassigned.items.length > 0)
         {
-            throw 'unassigned exercises remain!'
-            
+            throw 'unassigned exercises remain!'      
         }
         const ex = Object.values(columns)
     
@@ -147,7 +144,9 @@ var arr = []
         }
 
         const exerciseDaysAndOrders = {exerciseDaysAndOrders:arr}
-        axios.post('https://localhost:44317/A2SWorkout/UpdateDayAndPriority',exerciseDaysAndOrders)
+         console.log(exerciseDaysAndOrders);
+
+        axios.post('https://localhost:44317/A2SWorkout/Create',exerciseDaysAndOrders)
     }   
     
     if(!active){
@@ -189,7 +188,6 @@ var arr = []
                                                         return(<div></div>)
                                                     }
                                                     else
-                                                    console.log(item)
                                                     {return(
                                                         
                                                         <Draggable key={item.uniqueId} draggableId={item.uniqueId} index={index}>
