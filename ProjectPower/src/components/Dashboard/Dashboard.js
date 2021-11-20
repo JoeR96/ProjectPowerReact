@@ -51,19 +51,22 @@ const data = [
         }]
 
 function Dashboard() {
-    
-    
-    
     return (
-        <Container>
-            <Grid>
+        <div>
+            <div>
+            </div>
+            <Grid container>
                 {data.map(d => (             
-                    <Grid item key ={d.key} xs={4}md={6}lg={4}>
+                    <Grid item key ={d.key} xs={4} sm={4} md={4}lg={4} style={{
+                        paddingLeft: 100.,
+                        paddingBottom: 24
+                    }}>
                         <DashboardCard props={d}></DashboardCard>
                     </Grid>                          
                 ))}
-            </Grid>
-        </Container>
+            </Grid >
+        </div>
+       
         )
 }
 

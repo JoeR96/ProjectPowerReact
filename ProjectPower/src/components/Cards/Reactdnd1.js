@@ -38,7 +38,9 @@ function Reactdnd1(exercises,ref) {
                 
                 for (let exercise = 0; exercise < exercises.length; exercise++) {
                     const e = exercises[exercise];
-                    
+                    if(typeof(e) === 'object'){
+                        filtered.push(e)
+                    }
                 }
             }
 
