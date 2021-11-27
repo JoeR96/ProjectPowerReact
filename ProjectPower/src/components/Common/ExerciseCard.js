@@ -21,7 +21,6 @@ function Submit(amrapRepResult,exerciseid) {
 }
 
 function ExerciseCard(props) {
-    console.log(props)
     const [amrapRepResult, setAmrapCount] = React.useState(null);
     const [exerciseId, setExerciseId] = React.useState(null);
 

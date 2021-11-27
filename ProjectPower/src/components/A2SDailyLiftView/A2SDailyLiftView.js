@@ -13,7 +13,6 @@ function A2SDailyLiftView() {
     const [data, setData] = React.useState([]);
     React.useEffect(() => {
         JSON.stringify(userinfo)
-        console.log(userinfo)
         axios.post("https://localhost:44317/A2SWorkout/DailyWorkout",userinfo)
             .then(function (response){
                  setData(response.data);
