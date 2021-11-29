@@ -31,6 +31,7 @@ function Reactdnd1(exercises, ref) {
 
   function updateColumns(val) {
     console.log(val);
+
     setColumns((cols) => {
       var filtered = [];
 
@@ -220,9 +221,19 @@ function Reactdnd1(exercises, ref) {
                                           ...provided.draggableProps.style,
                                         }}
                                       >
-                                        {item.exerciseName}
+                                        {item.name}
                                         <div></div>
-                                        {item.TrainingMax} KG
+                                        {item.category}
+                                        <div></div>
+                                        {item.TrainingMax + ' KG'}
+                                        <div></div>
+                                        {'Sets ' + item.sets}
+                                        <div></div>
+                                        {'Reps ' + item.reps}
+                                        <div></div>
+                                        {'Rep increase ' + item.repIncrease}
+                                        <div></div>
+                                        {item.template}
                                       </div>
                                     );
                                   }}

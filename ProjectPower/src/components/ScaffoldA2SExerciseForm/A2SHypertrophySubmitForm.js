@@ -4,21 +4,26 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Counter from "../Common/Counter";
 import Button from "mui-button";
 import { v4 as uuidv4 } from "uuid";
-function A2SHypertrophySubmitForm(submitExercise) {
+function A2SHypertrophySubmitForm(submitExercise, baseinfo) {
+  console.log(baseinfo)
+  console.log(submitExercise)
   const [auxiliaryLift, setAuxiliaryLift] = useState();
   const [trainingMax, setTrainingMax] = useState();
   // eslint-disable-next-line no-unused-vars
   const [sets, setSets] = useState();
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    console.log(submitExercise.baseinfo)
     const data = {
+      name: submitExercise.baseinfo.name,
+      category: submitExercise.baseinfo.cat,
       AuxillaryLift: auxiliaryLift,
       TrainingMax: trainingMax,
       uniqueId: uuidv4(),
-      template: "HyperTrophy",
+      template: submitExercise.baseinfo.temp,
       sets: sets,
     };
+    console.log(data)
     var x = submitExercise.submitExercise;
     x.submitExercise(data);
   };

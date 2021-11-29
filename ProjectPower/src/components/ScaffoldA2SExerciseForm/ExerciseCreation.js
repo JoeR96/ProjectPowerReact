@@ -4,10 +4,14 @@ import A2SHypertrophySubmitForm from "./A2SHypertrophySubmitForm";
 import A2SRepsThenSetsSubmitFrom from "./A2SRepsThenSetsSubmitForm";
 
 function ExerciseCreation(submitExercise) {
-  const [activeTemplate, setActiveTemplate] = useState("");
+  const [activeTemplate, setActiveTemplate] = useState({
+    name: '',
+    cat: '',
+    temp: 'A2SHypertrophy'
+  });
 
-  useEffect(() => {}, [activeTemplate]);
-  if (activeTemplate === "") {
+  useEffect(() => { console.log(activeTemplate) }, [activeTemplate]);
+  if (activeTemplate.temp === '') {
     return (
       <div>
         <CreateExerciseWithTemplate
@@ -16,24 +20,24 @@ function ExerciseCreation(submitExercise) {
       </div>
     );
   }
-  if (activeTemplate === "A2SHypertrophy") {
+  if (activeTemplate.temp === 'A2SHypertrophy') {
     return (
       <div>
         <CreateExerciseWithTemplate
           activeTemplate={setActiveTemplate}
         ></CreateExerciseWithTemplate>
-        <A2SHypertrophySubmitForm submitExercise={submitExercise} />
+        <A2SHypertrophySubmitForm baseinfo={activeTemplate} submitExercise={submitExercise} />
       </div>
     );
   }
 
-  if (activeTemplate === "A2SRepsThenSets") {
+  if (activeTemplate.temp === 'A2SRepsThenSets') {
     return (
       <div>
         <CreateExerciseWithTemplate
           activeTemplate={setActiveTemplate}
         ></CreateExerciseWithTemplate>
-        <A2SRepsThenSetsSubmitFrom submitExercise={submitExercise} />
+        <A2SRepsThenSetsSubmitFrom baseinfo={activeTemplate} submitExercise={submitExercise} />
       </div>
     );
   }

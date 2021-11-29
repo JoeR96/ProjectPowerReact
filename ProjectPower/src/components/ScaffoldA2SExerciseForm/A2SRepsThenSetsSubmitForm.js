@@ -3,7 +3,7 @@ import Counter from "../Common/Counter";
 import Button from "mui-button";
 import { v4 as uuidv4 } from "uuid";
 
-function A2SRepsThenSetsSubmitForm(submitExercise) {
+function A2SRepsThenSetsSubmitForm(submitExercise, baseinfo) {
   // eslint-disable-next-line no-unused-vars
   const [reps, setReps] = useState(8);
   // eslint-disable-next-line no-unused-vars
@@ -15,12 +15,15 @@ function A2SRepsThenSetsSubmitForm(submitExercise) {
     e.preventDefault();
 
     const data = {
+      name: submitExercise.baseinfo.name,
+      category: submitExercise.baseinfo.cat,
+      template: submitExercise.baseinfo.temp,
       reps: reps,
       repIncrease: repIncrease,
       uniqueId: uuidv4(),
       sets: sets,
     };
-    console.log(submitExercise);
+    console.log(data);
     var x = submitExercise.submitExercise;
     x.submitExercise(data);
   };
