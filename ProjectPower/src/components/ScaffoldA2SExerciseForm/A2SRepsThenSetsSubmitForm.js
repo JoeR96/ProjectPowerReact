@@ -3,6 +3,7 @@ import Counter from "../Common/Counter";
 import Button from "mui-button";
 import { v4 as uuidv4 } from "uuid";
 
+// eslint-disable-next-line no-unused-vars
 function A2SRepsThenSetsSubmitForm(submitExercise, baseinfo) {
   // eslint-disable-next-line no-unused-vars
   const [reps, setReps] = useState(8);
@@ -10,6 +11,16 @@ function A2SRepsThenSetsSubmitForm(submitExercise, baseinfo) {
   const [repIncrease, setRepIncrease] = useState(2);
   // eslint-disable-next-line no-unused-vars
   const [sets, setSets] = useState(3);
+
+  const setExerciseSets = (counter) => {
+    setSets(counter)
+  }
+  const setSetRepIncreasePerSet = (counter) => {
+    setRepIncrease(counter)
+  }
+  const setStartingReps = (counter) => {
+    setReps(counter)
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -36,7 +47,11 @@ function A2SRepsThenSetsSubmitForm(submitExercise, baseinfo) {
           paddingBottom: 12,
         }}
       >
-        <Counter name={"Sets"} initialCount={sets}></Counter>
+        <Counter name={"Sets"}
+          initialCount={sets}
+          setState={setExerciseSets}
+          initialCount={3}>
+          </Counter>
       </div>
       <div
         style={{
@@ -44,7 +59,13 @@ function A2SRepsThenSetsSubmitForm(submitExercise, baseinfo) {
           paddingBottom: 12,
         }}
       >
-        <Counter name={"Starting Reps"} initialCount={reps}></Counter>
+        <Counter
+          name={"Starting Reps"}
+          initialCount={reps}
+          setState={setStartingReps}
+          initialCount={8}
+        > 
+          </Counter>
       </div>
       <div
         style={{
@@ -55,6 +76,8 @@ function A2SRepsThenSetsSubmitForm(submitExercise, baseinfo) {
         <Counter
           name={"Rep Increase Per Set"}
           initialCount={repIncrease}
+          setState={setSetRepIncreasePerSet}
+          initialCount={2}
         ></Counter>
       </div>
       <div

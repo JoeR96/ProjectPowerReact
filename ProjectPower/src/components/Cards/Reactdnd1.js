@@ -5,8 +5,8 @@ import React, {
   forwardRef,
 } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-import axios from "axios";
-import Button from "../Common/Button";
+import SimpleAccordion from "../Common/Accordion";
+//import axios from "axios";
 
 function Reactdnd1(exercises, ref) {
   const numberOfWorkoutDays = 4;
@@ -68,7 +68,7 @@ function Reactdnd1(exercises, ref) {
     },
   }));
 
-  useEffect(() => { }, [columns]);
+  useEffect(() => {}, [columns]);
   function arraymove(arr, fromIndex, toIndex) {
     var element = arr[fromIndex];
     arr.splice(fromIndex, 1);
@@ -80,8 +80,6 @@ function Reactdnd1(exercises, ref) {
     if (!result.destination) return;
     const { source, destination } = result;
     if (source.droppableId !== destination.droppableId) {
-
-
       const sourceColumn = columns[source.droppableId];
       const destColumn = columns[destination.droppableId];
       const sourceItems = [...sourceColumn.items];
@@ -90,9 +88,8 @@ function Reactdnd1(exercises, ref) {
       const y = destination.index;
       const [removed] = sourceItems.splice(source.index, 1);
 
-
       destItems.splice(destItems.index, 0, removed);
-      arraymove(destItems, y, x)
+      arraymove(destItems, y, x);
 
       setColumns({
         ...columns,
@@ -109,7 +106,6 @@ function Reactdnd1(exercises, ref) {
       const column = columns[source.droppableId];
       const copiedItems = [...column.items];
       const [removed] = copiedItems.splice(source.index, 1);
-
 
       copiedItems.splice(destination.index, 0, removed);
 
@@ -130,25 +126,25 @@ function Reactdnd1(exercises, ref) {
     }
     return typeof column.items === "undefined" ? false : true;
   }
-  var arr = [];
-  function updateLiftDayAndOrder() {
-    if (columns.unassigned.items.length > 0) {
-      throw "unassigned exercises remain!";
-    }
-    const ex = Object.values(columns);
+  //var arr = [];
+  // function updateLiftDayAndOrder() {
+  //   if (columns.unassigned.items.length > 0) {
+  //     throw "unassigned exercises remain!";
+  //   }
+  //   const ex = Object.values(columns);
 
-    for (let index = 0; index < numberOfWorkoutDays; index++) {
-      var objectToAdd = { exercises: Object.values(ex[index].items) };
-      arr[index] = objectToAdd;
-    }
+  //   for (let index = 0; index < numberOfWorkoutDays; index++) {
+  //     var objectToAdd = { exercises: Object.values(ex[index].items) };
+  //     arr[index] = objectToAdd;
+  //   }
 
-    const exerciseDaysAndOrders = { exerciseDaysAndOrders: arr };
+  //   const exerciseDaysAndOrders = { exerciseDaysAndOrders: arr };
 
-    axios.post(
-      "https://localhost:44317/A2SWorkout/Create",
-      exerciseDaysAndOrders
-    );
-  }
+  //   axios.post(
+  //     "https://localhost:44317/A2SWorkout/Create",
+  //     exerciseDaysAndOrders
+  //   );
+  // }
 
   if (!active) {
     return <div></div>;
@@ -221,19 +217,9 @@ function Reactdnd1(exercises, ref) {
                                           ...provided.draggableProps.style,
                                         }}
                                       >
-                                        {item.name}
-                                        <div></div>
-                                        {item.category}
-                                        <div></div>
-                                        {item.TrainingMax + ' KG'}
-                                        <div></div>
-                                        {'Sets ' + item.sets}
-                                        <div></div>
-                                        {'Reps ' + item.reps}
-                                        <div></div>
-                                        {'Rep increase ' + item.repIncrease}
-                                        <div></div>
-                                        {item.template}
+                                        <SimpleAccordion
+                                          item={item}
+                                        ></SimpleAccordion>
                                       </div>
                                     );
                                   }}
