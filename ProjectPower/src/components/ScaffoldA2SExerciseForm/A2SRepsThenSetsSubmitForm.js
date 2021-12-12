@@ -1,18 +1,22 @@
-import { React, useState } from "react";
+import { React, useContext, useState } from "react";
 import Counter from "../Common/Counter";
 import Button from "mui-button";
 import { v4 as uuidv4 } from "uuid";
+import ExerciseContext from './ExerciseBaseContext'
+import SubmitContext from "./SubmitContext";
 
-// eslint-disable-next-line no-unused-vars
-function A2SRepsThenSetsSubmitForm(submitExercise, baseinfo) {
-  // eslint-disable-next-line no-unused-vars
+function A2SRepsThenSetsSubmitForm(submitExercise) {
+
   const [reps, setReps] = useState(8);
-  // eslint-disable-next-line no-unused-vars
   const [repIncrease, setRepIncrease] = useState(2);
-  // eslint-disable-next-line no-unused-vars
   const [sets, setSets] = useState(3);
+  const [startWeight, setStartWeight] = useState(0);
+  const [setTarget, setSetTarget] = useState(3);
+  const [repTarget, setRepTarget] = useState(3);
+  const baseInformation = useContext(ExerciseContext)
+  const submit = useContext(SubmitContext)
 
-  const setExerciseSets = (counter) => {
+  const setStartingSets = (counter) => {
     setSets(counter)
   }
   const setSetRepIncreasePerSet = (counter) => {
@@ -22,71 +26,98 @@ function A2SRepsThenSetsSubmitForm(submitExercise, baseinfo) {
     setReps(counter)
   }
 
+  const setStartingWeight = (startingWeight) => {
+    setStartWeight(startingWeight)
+  }
+
+  const setTargetSets = (targetSets) => {
+    setSetTarget(targetSets)
+  }
+
+  const setTargetReps = (targetReps) => {
+    setRepTarget(targetReps)
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
-
     const data = {
-      name: submitExercise.baseinfo.name,
-      category: submitExercise.baseinfo.cat,
-      template: submitExercise.baseinfo.temp,
-      reps: reps,
-      repIncrease: repIncrease,
-      uniqueId: uuidv4(),
-      sets: sets,
+      exerciseName: baseInformation.exerciseName,
+      Username: localStorage.getItem('username'),
+      category: baseInformation.category,
+      template: baseInformation.template,
+      liftDay: 0,
+      liftOrder: 0,
+      startingReps: reps,
+      startingSets: reps,
+      repIncreasePerSet: repIncrease,
+      goalSets: setTarget,
+      goalReps: repTarget,
+      startingWeight: startWeight
     };
-    console.log(data);
-    var x = submitExercise.submitExercise;
-    x.submitExercise(data);
+    ; submit(data, uuidv4())
   };
 
   return (
     <div>
-      <div
-        style={{
-          paddingTop: 12,
-          paddingBottom: 12,
-        }}
-      >
-        <Counter name={"Sets"}
+      <label>Starting Weight</label>
+      <br />
+      <input
+        name="startingWeight"
+        type="number"
+        onChange={(e) => setStartingWeight(e.target.value)}
+      />
+      <Counter
+          style={{
+            paddingTop: 12,
+            paddingBottom: 12,
+          }} name={"Sets"}
           initialCount={sets}
-          setState={setExerciseSets}
-          initialCount={3}>
+          setState={setStartingSets}
+          >
           </Counter>
-      </div>
-      <div
-        style={{
+        <Counter
+          style={{
           paddingTop: 12,
           paddingBottom: 12,
         }}
-      >
-        <Counter
           name={"Starting Reps"}
           initialCount={reps}
           setState={setStartingReps}
-          initialCount={8}
+          
         > 
-          </Counter>
-      </div>
-      <div
-        style={{
-          paddingTop: 12,
-          paddingBottom: 12,
-        }}
-      >
-        <Counter
+        </Counter>
+      <Counter
+          style={{
+            paddingTop: 12,
+            paddingBottom: 12,
+          }}
           name={"Rep Increase Per Set"}
           initialCount={repIncrease}
-          setState={setSetRepIncreasePerSet}
-          initialCount={2}
-        ></Counter>
-      </div>
-      <div
+          setState={setSetRepIncreasePerSet}       
+      ></Counter>
+      <Counter
         style={{
           paddingTop: 12,
           paddingBottom: 12,
         }}
-      >
+        name={"Set Target"}
+        initialCount={repIncrease}
+        setState={setTargetSets}
+      ></Counter>
+      <Counter
+        style={{
+          paddingTop: 12,
+          paddingBottom: 12,
+        }}
+        name={"Rep Target"}
+        initialCount={repIncrease}
+        setState={setTargetReps}
+      ></Counter>
         <Button
+          style={{
+            paddingTop: 12,
+            paddingBottom: 12,
+          }}
           onClick={handleSubmit}
           type="submit"
           color="primary"
@@ -94,7 +125,6 @@ function A2SRepsThenSetsSubmitForm(submitExercise, baseinfo) {
         >
           Submit
         </Button>
-      </div>
     </div>
   );
 }

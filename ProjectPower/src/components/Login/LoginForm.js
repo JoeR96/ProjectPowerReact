@@ -24,19 +24,22 @@ export default class App extends Component {
     handleSubmit(e) {
         e.preventDefault();
         const data = {
-            Username: this.state.username,
-            Password: this.state.password
+            username: this.state.username,
+            password: this.state.password
         }
         JSON.stringify(data);
-
-        Axios.post('https://192.168.8.102:44317/UserAccounts/Login',  data )
+        console.log(data)
+        Axios.post('https://localhost:44317/UserAccounts/Login',  data )
             .then(res => {
+                console.log(res)
                     localStorage.clear();
                     localStorage.setItem('username',res.data.userName)
                     localStorage.setItem('day',res.data.currentDay)
-                    localStorage.setItem('week',res.data.currentWeek)
+                localStorage.setItem('week', res.data.currentWeek)
+                console.log(res)
    
             })
+        console.log(localStorage.getItem('username'))
         this.setState({ redirectToReferrer: true })
     }
 

@@ -1,55 +1,40 @@
 import React, { useState, useEffect } from "react";
 import CreateExerciseWithTemplate from "../ScaffoldA2SExerciseForm/CreateExerciseWithTemplate";
 import A2SHypertrophySubmitForm from "./A2SHypertrophySubmitForm";
-import A2SRepsThenSetsSubmitFrom from "./A2SRepsThenSetsSubmitForm";
+import A2SRepsThenSetsSubmitForm from "./A2SRepsThenSetsSubmitForm";
+import { ExerciseProvider } from "./ExerciseBaseContext";
 
 function ExerciseCreation(submitExercise) {
-  const [activeTemplate, setActiveTemplate] = useState({
-    name: "",
-    cat: "",
-    temp: "A2SHypertrophy",
-  });
+  const [activeTemplate, setActiveTemplate] = useState('A2SHypertrophy');
 
   useEffect(() => {
-    console.log(activeTemplate);
+    console.log(activeTemplate)
   }, [activeTemplate]);
-  if (activeTemplate.temp === "") {
+
+  if (activeTemplate === "A2SHypertrophy") {
     return (
       <div>
-        <CreateExerciseWithTemplate
-          activeTemplate={setActiveTemplate}
-        ></CreateExerciseWithTemplate>
+        <ExerciseProvider value={activeTemplate}>
+          <CreateExerciseWithTemplate
+            Component={A2SHypertrophySubmitForm}
+            SetTemplate={setActiveTemplate}
+          >(</CreateExerciseWithTemplate>
+        </ExerciseProvider>
       </div>
     );
   }
-  if (activeTemplate.temp === "A2SHypertrophy") {
+  if (activeTemplate === "A2SRepsThenSets") {
     return (
       <div>
+        <ExerciseProvider value={activeTemplate}>
         <CreateExerciseWithTemplate
-          activeTemplate={setActiveTemplate}
+            Component={A2SRepsThenSetsSubmitForm}
+            SetTemplate={setActiveTemplate}
         ></CreateExerciseWithTemplate>
-        <A2SHypertrophySubmitForm
-          baseinfo={activeTemplate}
-          submitExercise={submitExercise}
-        />
+        </ExerciseProvider>
       </div>
     );
   }
 
-  if (activeTemplate.temp === "A2SRepsThenSets") {
-    return (
-      <div>
-        <CreateExerciseWithTemplate
-          activeTemplate={setActiveTemplate}
-        ></CreateExerciseWithTemplate>
-        <A2SRepsThenSetsSubmitFrom
-          baseinfo={activeTemplate}
-          submitExercise={submitExercise}
-        />
-      </div>
-    );
-  }
-
-  return <div></div>;
 }
 export default ExerciseCreation;

@@ -3,8 +3,29 @@ import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
+import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    panelSummary: {
+      
+    },
+    heading: {
+      fontSize: theme.typography.pxToRem(15),
+      fontWeight: theme.typography.fontWeightRegular
+    },
+    innerMenuItem: {
+      paddingLeft: "32px"
+    },
+    expanded: {
+      padding: "0px"
+    },
+
+  })
+);
 
 export default function SimpleAccordion(item) {
+  const classes = useStyles();
   var x = { ...item.item };
   if (item === "undefined") {
     return <div></div>;
@@ -12,11 +33,10 @@ export default function SimpleAccordion(item) {
   if (x.template === "A2SHypertrophy") {
     return (
       <div>
-        <Accordion>
+        <Accordion classes={{ root: classes.accordionRoot }}>
           <AccordionSummary aria-controls="panel1a-content" id="panel1a-header">
-            <Typography>
-              <h3>{x.name}</h3>
-              <br />
+            <Typography style={{ wordWrap: 'break-word' }}>
+              <h3>{x.exerciseName}</h3>
               {x.template}
             </Typography>
           </AccordionSummary>
@@ -38,7 +58,7 @@ export default function SimpleAccordion(item) {
         <Accordion>
           <AccordionSummary aria-controls="panel1a-content" id="panel1a-header">
             <Typography>
-              {x.name}
+              <h3>{x.name}</h3>
               {x.template}
             </Typography>
           </AccordionSummary>

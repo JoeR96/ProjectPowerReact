@@ -1,39 +1,39 @@
-import { React, useEffect, useState } from "react";
+import { React, useState, useContext } from "react";
+import ExerciseContext from './ExerciseBaseContext'
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 import Counter from "../Common/Counter";
 import Button from "mui-button";
-import { v4 as uuidv4 } from "uuid";
-function A2SHypertrophySubmitForm(submitExercise, baseinfo) {
+import { v4 as uuidv4, v4 } from "uuid";
+import SubmitContext from "./SubmitContext";
 
-  
+function A2SHypertrophySubmitForm(submitExercise) {
 
-
-  console.log(baseinfo);
-  console.log(submitExercise);
+  const baseInformation = useContext(ExerciseContext)
   const [auxiliaryLift, setAuxiliaryLift] = useState(true);
   const [trainingMax, setTrainingMax] = useState(69);
-  // eslint-disable-next-line no-unused-vars
   const [sets, setSets] = useState();
+  const submit = useContext(SubmitContext)
 
   const setTheStateOfTheSets = (counter) => {
     setSets(counter)
   }
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(submitExercise.baseinfo);
     const data = {
-      name: submitExercise.baseinfo.name,
-      category: submitExercise.baseinfo.cat,
-      AuxillaryLift: auxiliaryLift,
-      TrainingMax: trainingMax,
-      uniqueId: uuidv4(),
-      template: submitExercise.baseinfo.temp,
+      Username: localStorage.getItem('username'),
+      exerciseName: baseInformation.exerciseName,
+      category: baseInformation.category,
+      auxillaryLift: auxiliaryLift,
+      trainingMax: trainingMax,
+      template: baseInformation.template,
       sets: sets,
+      liftDay: 1,
+      liftOrder: 1,
+      roundingValue: 2.5
+
     };
-    console.log(data);
-    var x = submitExercise.submitExercise;
-    x.submitExercise(data);
+    submit(data, uuidv4())
   };
 
  

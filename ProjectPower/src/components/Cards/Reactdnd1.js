@@ -3,12 +3,15 @@ import React, {
   useEffect,
   useImperativeHandle,
   forwardRef,
+  useContext,
 } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import SimpleAccordion from "../Common/Accordion";
-//import axios from "axios";
-
+import  DayAndLiftOrderContext from "../ScaffoldA2SExerciseForm/DayAndLiftOrderContext"
+import Button from "mui-button";
 function Reactdnd1(exercises, ref) {
+  const submit = useContext(DayAndLiftOrderContext)
+
   const numberOfWorkoutDays = 4;
   const workoutColumns = {
     unassigned: {
@@ -30,8 +33,6 @@ function Reactdnd1(exercises, ref) {
   const [index, setIndex] = useState(0);
 
   function updateColumns(val) {
-    console.log(val);
-
     setColumns((cols) => {
       var filtered = [];
 
@@ -63,8 +64,11 @@ function Reactdnd1(exercises, ref) {
     }
   }
   useImperativeHandle(ref, () => ({
-    setFromOutside(msg) {
-      updateColumns(msg);
+    setFromOutside(msg, uuid) {
+
+      var newObj = { ...msg, uniqueId: uuid }
+      updateColumns(newObj);
+      return columns;
     },
   }));
 
@@ -76,20 +80,16 @@ function Reactdnd1(exercises, ref) {
   }
 
   const onDragEnd = (result, columns, setColumns) => {
-    console.log(result);
     if (!result.destination) return;
     const { source, destination } = result;
     if (source.droppableId !== destination.droppableId) {
-      const sourceColumn = columns[source.droppableId];
-      const destColumn = columns[destination.droppableId];
-      const sourceItems = [...sourceColumn.items];
-      const destItems = [...destColumn.items];
-      const x = source.index;
-      const y = destination.index;
-      const [removed] = sourceItems.splice(source.index, 1);
+      var sourceColumn = columns[source.droppableId];
+      var destColumn = columns[destination.droppableId];
+      var sourceItems = [...sourceColumn.items];
+      var destItems = [...destColumn.items];
+      var [removed] = sourceItems.splice(source.index, 1);
+      destItems.splice(destination.index, 0, removed);
 
-      destItems.splice(destItems.index, 0, removed);
-      arraymove(destItems, y, x);
 
       setColumns({
         ...columns,
@@ -126,25 +126,6 @@ function Reactdnd1(exercises, ref) {
     }
     return typeof column.items === "undefined" ? false : true;
   }
-  //var arr = [];
-  // function updateLiftDayAndOrder() {
-  //   if (columns.unassigned.items.length > 0) {
-  //     throw "unassigned exercises remain!";
-  //   }
-  //   const ex = Object.values(columns);
-
-  //   for (let index = 0; index < numberOfWorkoutDays; index++) {
-  //     var objectToAdd = { exercises: Object.values(ex[index].items) };
-  //     arr[index] = objectToAdd;
-  //   }
-
-  //   const exerciseDaysAndOrders = { exerciseDaysAndOrders: arr };
-
-  //   axios.post(
-  //     "https://localhost:44317/A2SWorkout/Create",
-  //     exerciseDaysAndOrders
-  //   );
-  // }
 
   if (!active) {
     return <div></div>;
@@ -186,7 +167,6 @@ function Reactdnd1(exercises, ref) {
                           }}
                         >
                           {column.items.map((item, index) => {
-                            console.log(item);
                             if (
                               column.items.length < 1 ||
                               typeof item === "undefined"
@@ -219,6 +199,7 @@ function Reactdnd1(exercises, ref) {
                                       >
                                         <SimpleAccordion
                                           item={item}
+                                          disableGutters elevation={0}
                                         ></SimpleAccordion>
                                       </div>
                                     );
@@ -238,15 +219,7 @@ function Reactdnd1(exercises, ref) {
           }
         })}
       </DragDropContext>
-      {/* <Button
-        onClick={updateLiftDayAndOrder}
-        id="redirectToReferrer"
-        type="submit"
-        color="dark grey"
-        className="form__custom-button"
-      >
-        Submit
-      </Button> */}
+        <Button onClick={() => console.log(submit)}>Submit</Button>
     </div>
   );
 }

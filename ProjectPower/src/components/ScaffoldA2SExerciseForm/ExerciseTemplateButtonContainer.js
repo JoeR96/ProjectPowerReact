@@ -20,6 +20,7 @@ function ExerciseCreation(submitExercise) {
       <div>
         <CreateExerciseWithTemplate
           activeTemplate={setActiveTemplate}
+          Component={A2SHypertrophySubmitForm}
         ></CreateExerciseWithTemplate>
         <A2SHypertrophySubmitForm submitExercise={submitExercise} />
       </div>
@@ -31,6 +32,7 @@ function ExerciseCreation(submitExercise) {
       <div>
         <CreateExerciseWithTemplate
           activeTemplate={setActiveTemplate}
+          Component={A2SRepsThenSetsSubmitForm}
         ></CreateExerciseWithTemplate>
         <A2SRepsThenSetsSubmitForm submitExercise={submitExercise} />
       </div>

@@ -5,7 +5,6 @@ import { Typography } from "@material-ui/core";
 
 // eslint-disable-next-line react/prop-types
 function Counter({ initialCount, name, setState }) {
-  console.log(setState)
   const [count, setCount] = useState(initialCount);
 
   useEffect(() => {
@@ -29,17 +28,21 @@ function Counter({ initialCount, name, setState }) {
         {name}
       </Typography>
       <Grid container>
-        <Grid item xs={3} sm={4} md={4} lg={4}>
+        <Grid item xs={2} sm={2} md={2} lg={2}>
           <Button onClick={decrementCount} variant="contained">
-            <Typography style={{ fontWeight: 600 }}>-</Typography>
+            <Typography style={{
+              fontWeight: 600}}>-</Typography>
           </Button>
         </Grid>
-        <Grid item xs={6} sm={4} md={4} lg={4}>
-          <Typography style={{ fontWeight: 600 }}>{parseInt(count)}</Typography>
+        <Grid item xs={8} sm={8} md={8} lg={8}>
+          <Typography style={{
+            fontWeight: 600
+           }}>{parseInt(count)}</Typography>
         </Grid>
-        <Grid item xs={3} sm={4} md={4} lg={4}>
+        <Grid item xs={2} sm={2} md={2} lg={2}>
           <Button onClick={incrementCount} variant="contained">
-            <Typography style={{ fontWeight: 600 }}>+</Typography>
+            <Typography style={{
+              fontWeight: 600 }}>+</Typography>
           </Button>
         </Grid>
         
