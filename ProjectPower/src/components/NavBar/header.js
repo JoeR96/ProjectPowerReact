@@ -78,7 +78,7 @@ const Header = (props) => {
                                     color="textSecondary"
                                     className={classes.title}
                                 >
-                                    Average 2 Savage BIG DICK CYCLES
+                                    BANK OF ENGLAND CYCLEeeqwe
                                     {process.env.PUBLIC_URL}
                                 </Typography>
                                 {isMobile ? (

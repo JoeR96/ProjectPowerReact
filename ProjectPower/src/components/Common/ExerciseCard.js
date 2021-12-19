@@ -6,7 +6,6 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import Button from 'mui-button'
-import TextField from '@mui/material/TextField';
 import axios from 'axios';
 
 function Submit(amrapRepResult,exerciseid) {
@@ -27,7 +26,8 @@ function ExerciseCard(props) {
     return (
         <Card sx={{ minWidth: 125 }}>
             <CardContent style={{ backgroundColor: "grey" }}>
-                <Typography sx={{ fontSize: 36 }} color="text.primary" gutterBottom>
+                <Typography sx={{ fontSize: 36 }}
+                    color="text.primary" gutterBottom>
                         {props.props.exerciseName}            
                 </Typography>
                 <Typography variant="h5" component="div">
