@@ -1,5 +1,6 @@
-import React from "react";
 import { Grid } from "@material-ui/core";
+import React from "react";
+import DashboardCard from "../Common/DashboardCard";
 
 
 const data = [
@@ -14,14 +15,14 @@ const data = [
     title: "Current Workout",
     description: "Display weekly workout cards",
     image: "",
-    route: "/A2SDailyLiftView",
+    route: "/DailyLiftView",
     id: 2,
   },
   {
-    title: "Scaffold Workout",
+    title: "Create Workout",
     description: "Add exercise to db",
     image: "",
-    route: "/ScaffoldA2SExerciseForm",
+    route: "/CreateWorkout",
     id: 3,
   },
   {
@@ -51,8 +52,15 @@ function Dashboard() {
   return (
     <div>
       <Grid container>
-     
-      </Grid>
+        {data.map(d => (
+          <Grid item key={d.key} xs={4} sm={4} md={4} lg={4} style={{
+            paddingLeft: 100.,
+            paddingBottom: 24
+          }}>
+            <DashboardCard props={d}></DashboardCard>
+          </Grid>
+        ))}
+      </Grid >
     </div>
   );
 }

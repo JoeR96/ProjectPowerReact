@@ -42,7 +42,7 @@ function A2SRepsThenSetsSubmitForm(submitExercise) {
     e.preventDefault();
     const data = {
       exerciseName: baseInformation.exerciseName,
-      Username: localStorage.getItem('username'),
+      username: localStorage.getItem('username'),
       category: baseInformation.category,
       template: baseInformation.template,
       liftDay: 0,

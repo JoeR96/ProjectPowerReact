@@ -7,10 +7,11 @@ import React, {
 } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import SimpleAccordion from "../Common/Accordion";
-import  DayAndLiftOrderContext from "../ScaffoldA2SExerciseForm/DayAndLiftOrderContext"
+import DayAndLiftOrderContext from "../ScaffoldA2SExerciseForm/DayAndLiftOrderContext"
+import UpdateLiftDayAndOrderContext from "../ScaffoldA2SExerciseForm/UpdateDayAndLiftOrderContext";
 import Button from "mui-button";
 function Reactdnd1(exercises, ref) {
-  const submit = useContext(DayAndLiftOrderContext)
+  const submit = useContext(UpdateLiftDayAndOrderContext)
 
   const numberOfWorkoutDays = 4;
   const workoutColumns = {
@@ -72,11 +73,14 @@ function Reactdnd1(exercises, ref) {
     },
   }));
 
-  useEffect(() => {}, [columns]);
+  useEffect(() => {
+    submit(columns);
+  }, [columns]);
   function arraymove(arr, fromIndex, toIndex) {
     var element = arr[fromIndex];
     arr.splice(fromIndex, 1);
     arr.splice(toIndex, 0, element);
+  
   }
 
   const onDragEnd = (result, columns, setColumns) => {
@@ -219,7 +223,6 @@ function Reactdnd1(exercises, ref) {
           }
         })}
       </DragDropContext>
-        <Button onClick={() => console.log(submit)}>Submit</Button>
     </div>
   );
 }

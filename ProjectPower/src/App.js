@@ -13,6 +13,7 @@ import { createTheme } from "@material-ui/core";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import CreateExerciseWithTemplate from "./components/ScaffoldA2SExerciseForm/CreateExerciseWithTemplate";
 import DailyWorkoutView from "./components/DisplayWorkout/DailyWorkoutView";
+import ExerciseCreation from "./components/ScaffoldA2SExerciseForm/ExerciseCreation";
 export const themeOptions = createTheme({
   palette: {
     type: "dark",
@@ -43,8 +44,8 @@ function App() {
             <Route exact path="/Dashboard" component={Dashboard} />
             <Route
               exact
-              path="/A2SDailyLiftView"
-              component={A2SDailyLiftView}
+              path="/DailyLiftview"
+              component={DailyWorkoutView}
             />
             <Route exact path="/Login" component={LoginForm} />
             <Route
@@ -52,8 +53,7 @@ function App() {
               path="/ScaffoldA2SExerciseForm"
               component={CreateExerciseWithTemplate}
             />
-            <Route exact path="/WorkoutCreator" component={DailyWorkoutView} />
-            <Route exact path="/DailyWorkoutView" component={WorkoutCreation} />
+            <Route exact path="/CreateWorkout" component={WorkoutCreation} />
 
           </Switch>
         </Router>

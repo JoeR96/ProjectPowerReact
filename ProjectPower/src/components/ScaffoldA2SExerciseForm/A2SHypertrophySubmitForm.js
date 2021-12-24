@@ -21,7 +21,7 @@ function A2SHypertrophySubmitForm(submitExercise) {
   const handleSubmit = (e) => {
     e.preventDefault();
     const data = {
-      Username: localStorage.getItem('username'),
+      username: localStorage.getItem('username'),
       exerciseName: baseInformation.exerciseName,
       category: baseInformation.category,
       auxillaryLift: auxiliaryLift,

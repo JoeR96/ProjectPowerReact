@@ -6,14 +6,11 @@ import { SubmitProvider } from "../ScaffoldA2SExerciseForm/SubmitContext";
 import {DayAndLiftOrderProvider} from '../ScaffoldA2SExerciseForm/DayAndLiftOrderContext'
 import axios from "axios";
 import Button from "mui-button";
+import { UpdateLiftDayAndOrderProvider } from "../ScaffoldA2SExerciseForm/UpdateDayAndLiftOrderContext";
+
 function DragList() {
   function UpdateState(value, uuid) {
     var x = cref.current.setFromOutside(value, uuid);
-    console.log(x)
-    //loop over workout columns object
-    //loop through each column 
-    //get the unique id,column id, column position
-    console.log(uuid)
 
     var dayOrderUniqueId = []
 
@@ -23,19 +20,37 @@ function DragList() {
         if (value.items[index].uniqueId === uuid) {
           var w = value.items[index]
            dayOrderUniqueId = [key,index + 1,uuid];
-          console.log(dayOrderUniqueId)
-          console.log("LEBOOBIES")
         }
 
       }
     }
     var newObj = { ...value, uniqueId: uuid }
 
-    setExercises([...exercises, value]);
+    setExercises([...exercises, newObj]);
     console.log(exercises)
   }
-  function Submit(cols){
-   
+
+    const sortDays = (cols) => {
+      for (const [key, value] of Object.entries(cols)) {
+        for (let index = 0; index < value.items.length; index++) {
+
+            var w = value.items[index]
+            w.liftDay = key;
+          w.liftOrder = index;
+          var x = exercises.find(({ uniqueId }) => uniqueId === w.uniqueId);
+          x.liftDay = w.liftDay;
+          x.liftOrder = w.liftOrder;
+          console.log(w)
+          console.log(x)
+        }
+      }
+      exercises.find((e) => {
+
+      })
+    }
+  
+  function Submit(){
+ 
     var x = JSON.stringify({ "exerciseDaysAndOrders": exercises})
     console.log(x)
 
@@ -69,7 +84,10 @@ function DragList() {
           </Box>
         </Grid>
         <Grid item md={8}>
-          <Reactdnd1 ref={cref}></Reactdnd1>
+          <UpdateLiftDayAndOrderProvider value={sortDays}>
+            <Reactdnd1 ref={cref}></Reactdnd1>
+            <Button onClick={Submit}></Button>
+        / </UpdateLiftDayAndOrderProvider> 
         </Grid>
       </Grid>
 
