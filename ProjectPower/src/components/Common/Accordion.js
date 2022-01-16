@@ -56,9 +56,12 @@ export default function SimpleAccordion(item) {
     return (
       <div>
         <Accordion>
+          {
+            console.log(x)
+          }
           <AccordionSummary aria-controls="panel1a-content" id="panel1a-header">
             <Typography>
-              <h3>{x.name}</h3>
+              <h3>{x.exerciseName}</h3>
               {x.template}
             </Typography>
           </AccordionSummary>
@@ -66,11 +69,11 @@ export default function SimpleAccordion(item) {
             <Typography>
               {x.category}
               <br />
-              {"Sets " + x.sets}
+              {"Sets " + x.startingSets}
               <br />
-              {"Starting Reps " + x.reps}
+              {"Starting Reps " + x.startingReps}
               <br />
-              {"Rep increase" + x.repIncrease}
+              {"Rep increase" + x.repIncreasePerSet}
             </Typography>
           </AccordionDetails>
         </Accordion>

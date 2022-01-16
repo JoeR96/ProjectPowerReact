@@ -46,17 +46,21 @@ function CreateExerciseWithTemplate(Component) {
              <Button fullWidth onClick={() => setNameAndCategory('Barbell Row', 'Legs')}><h3>Barbell Row</h3></Button>
              <Button fullWidth onClick={() => setNameAndCategory('Front Squat', 'Legs')}><h3>Front Squat</h3></Button>
              <Button fullWidth onClick={() => setNameAndCategory('Romanian Deadlift', 'Legs')}><h3>Romanian Deadlift</h3></Button>
-             <Button fullWidth onClick={() => setNameAndCategory('Bench', 'Legs')}><h3>Bench</h3></Button>
+             <Button fullWidth onClick={() => setNameAndCategory('Bench', 'Chest')}><h3>Bench</h3></Button>
+             <Button fullWidth onClick={() => setNameAndCategory('Hack Squat', 'Legs')}><h3>Hack Squat</h3></Button>
+             <Button fullWidth onClick={() => setNameAndCategory('Tricep Pushdown', 'BIGDAVEARMS')}><h3>Tricep Pushdown</h3></Button>
 
          </Grid>
          <Grid  item md={4}>
-             <Button fullWidth onClick={() => setNameAndCategory('Squat', 'Legs')}><h3>Squat</h3></Button>
-             <Button fullWidth onClick={() => setNameAndCategory('Deadlift', 'Legs')}><h3>Deadlift</h3></Button>
-             <Button fullWidth onClick={() => setNameAndCategory('Overhead Press', 'Legs')}><h3>Overhead Press</h3></Button>
-             <Button fullWidth onClick={() => setNameAndCategory('Barbell Row', 'Legs')}><h3>Barbell Row</h3></Button>
-             <Button fullWidth onClick={() => setNameAndCategory('Front Squat', 'Legs')}><h3>Front Squat</h3></Button>
-             <Button fullWidth onClick={() => setNameAndCategory('Romanian Deadlift', 'Legs')}><h3>Romanian Deadlift</h3></Button>
-             <Button fullWidth onClick={() => setNameAndCategory('Bench', 'Legs')}><h3>Bench</h3></Button>
+             <Button fullWidth onClick={() => setNameAndCategory('Cable Flies', 'Shoulders')}><h3>Cable Flies</h3></Button>
+             <Button fullWidth onClick={() => setNameAndCategory('Shoulder Smith Press', 'Shoulders')}><h3>Smith OHP</h3></Button>
+             <Button fullWidth onClick={() => setNameAndCategory('Lat Pulldown', 'Back')}><h3>Lat Pulldown</h3></Button>
+             <Button fullWidth onClick={() => setNameAndCategory('Unilateral Pulldown', 'Back')}><h3>Unilateral Pulldown</h3></Button>
+             <Button fullWidth onClick={() => setNameAndCategory('Low Row', 'Back')}><h3>Low Row'</h3></Button>
+             <Button fullWidth onClick={() => setNameAndCategory('Leg Extension', 'Legs')}><h3>Leg Extension</h3></Button>
+             <Button fullWidth onClick={() => setNameAndCategory('Leg Curl', 'Legs')}><h3>Leg Curl</h3></Button>
+             <Button fullWidth onClick={() => setNameAndCategory('DB Bicep Curl', 'BIGDAVEARMS')}><h3>DB Bicep Curl</h3></Button>
+
 
                 </Grid>
          <Grid

@@ -54,6 +54,7 @@ function App() {
               component={CreateExerciseWithTemplate}
             />
             <Route exact path="/CreateWorkout" component={WorkoutCreation} />
+            <Route exact path="/DailyWorkoutView" component={DailyWorkoutView} />
 
           </Switch>
         </Router>

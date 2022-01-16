@@ -25,22 +25,27 @@ function Counter({ initialCount, name, setState }) {
       <Typography
         style={{ fontWeight: 600, paddingTop: 12, paddingBottom: 12 }}
       >
-        {name}
+        {name + "                                                                                                                     "}
+       {parseInt(count)}
       </Typography>
-      <Grid container>
-        <Grid item xs={2} sm={2} md={2} lg={2}>
-          <Button onClick={decrementCount} variant="contained">
+      
+      <Grid 
+      container>
+        <Grid item xs={3} sm={3} md={3} lg={3}>
+          <Button onClick={decrementCount} variant="outlined">
             <Typography style={{
-              fontWeight: 600}}>-</Typography>
+              fontWeight: 600
+            }}>-</Typography>
+            
           </Button>
         </Grid>
-        <Grid item xs={8} sm={8} md={8} lg={8}>
+        <Grid item xs={6} sm={6} md={6} lg={6}>
           <Typography style={{
             fontWeight: 600
-           }}>{parseInt(count)}</Typography>
+           }}></Typography>
         </Grid>
-        <Grid item xs={2} sm={2} md={2} lg={2}>
-          <Button onClick={incrementCount} variant="contained">
+        <Grid item xs={3} sm={3} md={3} lg={3}>
+          <Button onClick={incrementCount} variant="outlined">
             <Typography style={{
               fontWeight: 600 }}>+</Typography>
           </Button>

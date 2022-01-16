@@ -28,8 +28,8 @@ function A2SHypertrophySubmitForm(submitExercise) {
       trainingMax: trainingMax,
       template: baseInformation.template,
       sets: sets,
-      liftDay: 1,
-      liftOrder: 1,
+      liftDay: localStorage.getItem('week'),
+      liftOrder: localStorage.getItem('day'),
       roundingValue: 2.5
 
     };

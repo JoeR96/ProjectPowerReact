@@ -91,7 +91,7 @@ function A2SRepsThenSetsSubmitForm(submitExercise) {
             paddingTop: 12,
             paddingBottom: 12,
           }}
-          name={"Rep Increase Per Set"}
+          name={"Rep Increase"}
           initialCount={repIncrease}
           setState={setSetRepIncreasePerSet}       
       ></Counter>
@@ -101,7 +101,7 @@ function A2SRepsThenSetsSubmitForm(submitExercise) {
           paddingBottom: 12,
         }}
         name={"Set Target"}
-        initialCount={repIncrease}
+        initialCount={3}
         setState={setTargetSets}
       ></Counter>
       <Counter
@@ -110,7 +110,7 @@ function A2SRepsThenSetsSubmitForm(submitExercise) {
           paddingBottom: 12,
         }}
         name={"Rep Target"}
-        initialCount={repIncrease}
+        initialCount={8}
         setState={setTargetReps}
       ></Counter>
         <Button
