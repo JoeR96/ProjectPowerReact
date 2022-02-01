@@ -54,7 +54,7 @@ function DragList() {
     var x = JSON.stringify({ "exerciseDaysAndOrders": exercises})
     console.log(x)
 
-    axios.post('https://localhost:44317/WorkoutCreation/CreateWorkout', x, {
+    axios.post('https://projectpower.azurewebsites.net/WorkoutCreation/CreateWorkout', x, {
       headers: {
         // 'application/json' is the modern content-type for JSON, but some
         // older servers may use 'text/json'.

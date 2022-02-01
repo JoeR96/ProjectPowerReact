@@ -16,7 +16,7 @@ function Submit(amrapRepResult,exerciseid) {
     };
     
     JSON.stringify(amrapRepResult)
-    axios.put('https://localhost:44317/A2SWorkout/'+exerciseid , {amrapRepResult:amrapRepResult}, config )
+    axios.put('https://projectpower.azurewebsites.net/A2SWorkout/'+exerciseid , {amrapRepResult:amrapRepResult}, config )
 }
 
 function ExerciseCard(props) {

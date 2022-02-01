@@ -14,7 +14,7 @@ export default () => {
     const [exercises, setExercises] = useState([]);
 
     useEffect(() => {
-        fetch("https://localhost:44317/WorkoutCreation/DailyWorkout?username=bzzt&week=1&day=1")
+        fetch("https://projectpower.azurewebsites.net/WorkoutCreation/DailyWorkout?username=bzzt&week=1&day=1")
             .then((response) => response.json())
             .then((exercises) => setExercises(exercises));
     }, []);

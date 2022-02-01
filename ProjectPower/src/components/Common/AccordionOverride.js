@@ -4,6 +4,9 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
+import A2SHypertrophySubmitForm from "../ScaffoldA2SExerciseForm/A2SHypertrophySubmitForm";
+import SubmitA2SSetsThenRepsResult from "./SubmitA2SSetsThenRepsResult";
+import SubmitA2SHypertrophy from "./SubmitA2SHypertrophy";
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -59,9 +62,12 @@ export default function SimpleAccordion(item) {
                             <br />
                             {x.TrainingMax + " KG"}
                         </Typography>
+                        <SubmitA2SHypertrophy props={item.item}></SubmitA2SHypertrophy>
                     </AccordionDetails>
                 </Accordion>
-            </div>
+            
+                <hr></hr>
+</div>
         );
     } else {
         return (
@@ -87,8 +93,11 @@ export default function SimpleAccordion(item) {
                             <br />
                             {"Rep increase" + x.RepIncreasePerSet}
                         </Typography>
+                        <SubmitA2SSetsThenRepsResult props={item.item}></SubmitA2SSetsThenRepsResult>
                     </AccordionDetails>
                 </Accordion>
+                <hr></hr>
+
             </div>
         );
     }

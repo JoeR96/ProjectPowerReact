@@ -29,7 +29,7 @@ export default class App extends Component {
         }
         JSON.stringify(data);
         console.log(data)
-        Axios.post('https://localhost:44317/UserAccounts/Login',  data )
+        Axios.post('https://projectpower.azurewebsites.net/UserAccounts/Login',  data )
             .then(res => {
                 console.log(res)
                     localStorage.clear();
