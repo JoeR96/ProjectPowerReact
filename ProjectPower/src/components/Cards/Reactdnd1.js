@@ -13,7 +13,7 @@ import Button from "mui-button";
 function Reactdnd1(exercises, ref) {
   const submit = useContext(UpdateLiftDayAndOrderContext)
 
-  const numberOfWorkoutDays = 4;
+  const numberOfWorkoutDays = 5;
   const workoutColumns = {
     unassigned: {
       items: [],

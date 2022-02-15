@@ -40,8 +40,6 @@ function DragList() {
           var x = exercises.find(({ uniqueId }) => uniqueId === w.uniqueId);
           x.liftDay = w.liftDay;
           x.liftOrder = w.liftOrder;
-          console.log(w)
-          console.log(x)
         }
       }
       exercises.find((e) => {
@@ -59,7 +57,7 @@ function DragList() {
         // 'application/json' is the modern content-type for JSON, but some
         // older servers may use 'text/json'.
         // See: http://bit.ly/text-json
-        'content-type': 'application/json'
+        'content-type': 'application/js   on'
       }
     })
   }
