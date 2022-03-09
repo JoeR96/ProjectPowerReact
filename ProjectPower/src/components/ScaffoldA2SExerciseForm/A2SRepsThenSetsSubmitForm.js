@@ -48,7 +48,7 @@ function A2SRepsThenSetsSubmitForm(submitExercise) {
       liftDay: 0,
       liftOrder: 0,
       startingReps: reps,
-      startingSets: reps,
+      startingSets: sets,
       repIncreasePerSet: repIncrease,
       goalSets: setTarget,
       goalReps: repTarget,

@@ -5,8 +5,8 @@ import DashboardCard from "../Common/DashboardCard";
 
 const data = [
   {
-    title: "LOGIN",
-    description: "spaceAids",
+    title: "Login",
+    description: "Login Portal",
     image: "",
     route: "/Login",
     id: 1,

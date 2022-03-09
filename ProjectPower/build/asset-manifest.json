@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/ProjectPowerReact/static/css/main.e0aed7e5.chunk.css",
+    "main.js": "/ProjectPowerReact/static/js/main.c87d4156.chunk.js",
+    "main.js.map": "/ProjectPowerReact/static/js/main.c87d4156.chunk.js.map",
+    "runtime-main.js": "/ProjectPowerReact/static/js/runtime-main.a007067a.js",
+    "runtime-main.js.map": "/ProjectPowerReact/static/js/runtime-main.a007067a.js.map",
+    "static/css/2.c1008f3b.chunk.css": "/ProjectPowerReact/static/css/2.c1008f3b.chunk.css",
+    "static/js/2.bc49db07.chunk.js": "/ProjectPowerReact/static/js/2.bc49db07.chunk.js",
+    "static/js/2.bc49db07.chunk.js.map": "/ProjectPowerReact/static/js/2.bc49db07.chunk.js.map",
+    "static/js/3.332e8306.chunk.js": "/ProjectPowerReact/static/js/3.332e8306.chunk.js",
+    "static/js/3.332e8306.chunk.js.map": "/ProjectPowerReact/static/js/3.332e8306.chunk.js.map",
+    "index.html": "/ProjectPowerReact/index.html",
+    "static/css/2.c1008f3b.chunk.css.map": "/ProjectPowerReact/static/css/2.c1008f3b.chunk.css.map",
+    "static/css/main.e0aed7e5.chunk.css.map": "/ProjectPowerReact/static/css/main.e0aed7e5.chunk.css.map",
+    "static/js/2.bc49db07.chunk.js.LICENSE.txt": "/ProjectPowerReact/static/js/2.bc49db07.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/ProjectPowerReact/static/media/cormorant-latin-700italic.ac30d170.woff2"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a007067a.js",
+    "static/css/2.c1008f3b.chunk.css",
+    "static/js/2.bc49db07.chunk.js",
+    "static/css/main.e0aed7e5.chunk.css",
+    "static/js/main.c87d4156.chunk.js"
+  ]
+}
